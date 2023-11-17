@@ -42,7 +42,7 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-search"></i>
-                    <a href="#">Explore Courses</a>
+                    <a href="admin_explore_courses.php">Explore Courses</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-users"></i>
@@ -50,7 +50,7 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-envelope"></i>
-                    <a href="#">Messages</a>
+                    <a href="rcv_query.php">Messages</a>
                 </li>
                 <li class="item">
                     <div class="submenu-item">

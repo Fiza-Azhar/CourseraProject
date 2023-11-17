@@ -31,26 +31,26 @@ if (isset($message)) {
         <a href="admin_home.php" class="logo">Cour<span>sera</span></a>
         <div class="menu-content">
             <ul class="menu-items">
-                <div class="menu-title">Admin Menu</div>
+                <div class="menu-title">User Menu</div>
                 <li class="item">
                     <i class="fas fa-home"></i>
-                    <a href="#">Home</a>
+                    <a href="user_home.php">Home</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-plus"></i>
-                    <a href="#">Add Courses</a>
+                    <a href="#">About</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-search"></i>
-                    <a href="#">Explore Courses</a>
+                    <a href="ucourse.php">Explore Courses</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-users"></i>
-                    <a href="#">Users</a>
+                    <a href="#">Contact</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-envelope"></i>
-                    <a href="#">Messages</a>
+                    <a href="#">Enroll</a>
                 </li>
                 <li class="item">
                     <div class="submenu-item">

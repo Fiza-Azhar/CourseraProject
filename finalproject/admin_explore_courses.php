@@ -64,32 +64,6 @@ if (isset($_GET['delete'])) {
 
 <body>
     <?php include 'admin_menu.php'; ?>
-    <main class="main">
-        <section class="dashboard">
-
-            <section class="sone">
-            </section>
-            <div class="text">
-                <h1 class="title">Add Courses</h1>
-            </div>
-            <section class="add-products">
-                <div class="right_item">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <h3>add courses</h3>
-                        <input type="text" name="cname" class="box" placeholder="Enter course name" required>
-                        <input type="text" name="tname" class="box" placeholder="Enter teacher name" required>
-                        <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" placeholder="Add an image" class="box" required>
-                        <input type="number" min="0" name="capacity" class="box" placeholder="Enter capacity" required>
-                        <input type="number" min="0" name="assignment" class="box" placeholder="Enter Assignment" required>
-                        <input type="number" min="0" name="quizes" class="box" placeholder="Enter Quizes" required>
-                        <input type="text" name="type" class="box" placeholder="Enter Course type" required>
-                        <input type="submit" value="add course" name="add_course" class="btn">
-                    </form>
-                </div>
-            </section>
-
-        </section>
-    </main>
     <!-- product CRUD section starts  -->
 
 
@@ -97,7 +71,41 @@ if (isset($_GET['delete'])) {
     <!-- product CRUD section ends -->
 
     <!-- show courses  -->
+    <main class="main">
+        <section class="dashboard">
+            <section class="show-products">
+                <div class="box-container">
+                    <?php
+                    $select_products = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
+                    if (mysqli_num_rows($select_products) > 0) {
+                        while ($fetch_products = mysqli_fetch_assoc($select_products)) {
+                    ?>
+                            <div class="box">
+                                <?php
+                                // Assuming $fetch_products is an array with image information
+                                $imagePath = 'uploaded_img/' . $fetch_products['image'];
+                                ?>
+                                <img src="<?php echo $imagePath; ?>" alt="">
+                                <div class="cname"><?php echo $fetch_products['coursename']; ?></div>
+                                <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
+                                <div class="cname">$<?php echo $fetch_products['capacity']; ?>/-</div>
+                                <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
+                                <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
+                                <div class="cname"><?php echo $fetch_products['type']; ?></div>
+                                <a href="admin_products.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
+                                <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="option-btn" onclick="return confirm('delete this product?');">delete</a>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                        echo '<p class="empty">no products added yet!</p>';
+                    }
+                    ?>
+                </div>
 
+            </section>
+        </section>
+    </main>
 
     <!-- custom admin js file link  -->
     <script src="js/admin_script.js"></script>

@@ -1,18 +1,10 @@
-.sectionone {
-    background-image: linear-gradient(to bottom,
-            rgba(27, 27, 27, 0.5),
-            rgba(74, 74, 90, 0.5)), url("../Images/home-background.jpg");
-    background-size: cover;
-    padding-top: 14%;
-    margin-top: -13%;
-    z-index: 100;
-    position: relative;
-    background-position: center;
-    padding-bottom: 10%;
-    padding-left: 4%;
-    /* Set the width to your desired value */
-    height: 500px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
+
 
 .header {
     background-color: transparent;
@@ -48,83 +40,6 @@
     border-color: var(--primary-color);
 }
 
-#sectiontwo {
-    padding-right: 9%;
-    padding-right: 5%;
-    display: flex;
-}
-
-.avatar {
-    padding-left: 9%;
-    width: 60%;
-    position: relative;
-    z-index: 22;
-    background-color: var(--primary-color);
-    padding-top: 3%;
-    padding-bottom: 3%;
-}
-
-.avatar-img {
-    border: 4px solid var(--white-color);
-    border-radius: 100px;
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-}
-
-.side-Image {
-    width: 50%;
-    z-index: 100;
-    margin-top: -25%;
-}
-
-.left-space {
-    width: 50%;
-
-}
-
-.side-Image img {
-    height: 100%;
-    width: 100%;
-    border: none;
-
-}
-
-.sectionthree {
-    padding-right: 5%;
-    display: flex;
-    flex-direction: row;
-}
-
-
-/*header*/
-
-/*sidebarmenu*/
-/* Import Google font - Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-.sidebar {
-    position: fixed;
-    height: 100%;
-    width: 260px;
-    background: #11101d;
-    padding: 15px;
-    z-index: 99;
-    /* Adjust the width as needed */
-    background-color: var(--primary-color);
-    /* Set the background color as needed */
-    color: #fff;
-    /* Set the text color as needed */
-}
-
 .header-btn {
     display: flex;
     margin: auto;
@@ -147,6 +62,149 @@
 .header .flex .logo span {
     color: white;
 }
+
+.sectionone {
+    background-image: linear-gradient(to bottom,
+            rgba(27, 27, 27, 0.5),
+            rgba(74, 74, 90, 0.5)), url("../Images/home-background.jpg");
+    background-size: cover;
+    padding-top: 14%;
+    margin-top: -13%;
+    z-index: 100;
+    position: relative;
+    background-position: center;
+    padding-bottom: 10%;
+    padding-left: 4%;
+    /* Set the width to your desired value */
+    height: 500px;
+}
+
+
+#sectiontwo {
+    padding-right: 5%;
+    display: flex;
+}
+
+.avatar {
+    padding-left: 5%;
+    width: 60%;
+    position: relative;
+    z-index: 22;
+    background-color: var(--primary-color);
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.avatar-img {
+    border: 4px solid var(--white-color);
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.sectionthree {
+    padding-left: 5%;
+}
+
+.side-Image {
+    width: 50%;
+    z-index: 100;
+    margin-top: -25%;
+}
+
+.left-space {
+    width: 50%;
+
+}
+
+.fade-container {
+    margin-top: 12%;
+    opacity: 0;
+    animation: fadeInLeft 1s forwards;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-container h1 {
+    color: black;
+    font-size: 3em;
+
+    font-weight: var(--font-weight-extra-bold);
+}
+
+.fade-container h1 span {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.fade-container p {
+    color: #666;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.joinus {
+    background-color: var(--primary-color);
+    padding: 3% 10% 3% 10%;
+    color: white;
+    font-size: 17px;
+    font-weight: var(--font-weight-bold);
+    border: 3px solid white;
+    margin-top: 5%;
+}
+
+.joinus:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.side-Image img {
+    height: 100%;
+    width: 100%;
+    border: none;
+
+}
+
+.sectionthree {
+    padding-right: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+/*header*/
+
+/*sidebarmenu*/
+
+
+
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 260px;
+    background: #11101d;
+    padding: 15px;
+    z-index: 99;
+    /* Adjust the width as needed */
+    background-color: var(--primary-color);
+    /* Set the background color as needed */
+    color: #fff;
+    /* Set the text color as needed */
+}
+
 
 .sidebar a {
     color: #fff;
@@ -241,6 +299,8 @@
     z-index: 1000;
 }
 
+
+
 #user-btn {
     left: 85%;
     z-index: 1000;
@@ -298,11 +358,13 @@
     /* Adjust the margin between the icon and text in the submenu */
 }
 
-.box-container {
+/*END OF SIDEBAR MENU*/
+
+.dashboard .box-container {
     display: flex;
 }
 
-.box-container .box {
+.dashboard .box-container .box {
     border-radius: 0.5rem;
     padding: 1rem;
     background-color: white;
@@ -349,9 +411,11 @@
     padding: 3%;
     border: 2px solid rgba(74, 74, 90, 0.5);
     margin: 2%;
-    background-color: #E7F2FD;
+
     margin: auto;
     width: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .right_item {
@@ -386,6 +450,108 @@
     color: var(--primary-color);
     background-color: var(--white-color);
     border-color: var(--primary-color);
+}
+
+
+.dashboard .show-products {
+    padding-top: 10%;
+}
+
+.show-products .box-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns with equal width */
+    grid-gap: 10px;
+    /* Gap between grid items */
+    padding: 20px;
+}
+
+.show-products .box-container .box {
+    border: 2px solid black;
+}
+
+.show-products .box-container .box .input {
+    border: 2px solid black;
+    padding: 1%;
+    margin: 2%;
+}
+
+.show-products .box-container .box .cname {
+    border: 2px solid black;
+    padding: 1%;
+    margin: 2%;
+
+}
+
+.show-products .box-container .box .option-btn {
+    border: 2px solid white;
+    padding: 1%;
+    margin: 3%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+
+}
+
+.show-products .box-container .box .option-btn:hover {
+    border: 2px solid var(--primary-color);
+    padding: 1%;
+    margin: 3%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: white;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 15px;
+
+}
+
+.messages {
+    padding-top: 10%;
+}
+
+.messages h2 {
+    color: black;
+    font-size: 25px;
+    font-weight: var(--font-weight-extra-bold);
+    text-align: center;
+}
+
+
+.messages.box-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns with equal width */
+    grid-gap: 10px;
+    /* Gap between grid items */
+    padding: 20px;
+}
+
+
+.messages .box-container .box p {
+    margin-top: 0.5rem;
+    padding: 1.5rem;
+    background-color: #E7F2FD;
+    color: black;
+    font-size: var(--h5-font-size);
+    border-radius: 0.5rem;
+    border: var(--border);
+    font-weight: var(--font-weight-bold);
+}
+
+.messages .box-container .box span {
+
+    background-color: #E7F2FD;
+    color: var(--black);
+    font-size: var(--h5-font-size);
+    border-radius: 0.5rem;
+    border: var(--border);
+    font-weight: var(--font-weight-bold);
 }
 
 /*account box*/
@@ -645,6 +811,7 @@ footer {
     color: #3F71EA;
 }
 
+/*Footer end*/
 @media (max-width: 880px) {
 
     .footer-distributed .footer-left,

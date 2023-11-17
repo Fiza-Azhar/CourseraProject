@@ -69,7 +69,11 @@ if (isset($message)) {
     </section>
     <section class="sectionthree">
         <div class="left-space">
-
+            <div class="fade-container">
+                <h1>Welcome to <span>Coursera<span></h1>
+                <p>Explore a world of knowledge and enhance your skills with Coursera. Our platform offers a diverse range of courses taught by experts from top universities and organizations. Whether you're looking to advance your career or pursue a personal interest, Coursera provides the tools and resources you need to succeed.</p>
+                <a href="register.php"> <button class="joinus">Join Us</button></a>
+            </div>
         </div>
         <div class="side-Image">
             <img src="Images/education-online-books.png" class="avatar-img">
@@ -77,22 +81,23 @@ if (isset($message)) {
     </section>
     <footer class="footer-distributed">
 
-        <div class="footer-left">
-            <h3>Sagar<span>Developer</span></h3>
 
-            <p class="footer-links">
-                <a href="#">Home</a>
-                |
-                <a href="#">About</a>
-                |
-                <a href="#">Contact</a>
-                |
-                <a href="#">Blog</a>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the company</span>
+                <strong>Maryam Developer</strong> is a Youtube channel where you can find more creative CSS Animations
+                and
+                Effects along with
+                HTML, JavaScript and Projects using C/C++.
             </p>
-
-            <p class="footer-company-name">Copyright © 2021 <strong>SagarDeveloper</strong> All rights reserved</p>
+            <div class="footer-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
         </div>
-
         <div class="footer-center">
             <div>
                 <i class="fa fa-map-marker"></i>
@@ -109,21 +114,21 @@ if (isset($message)) {
                 <p><a href="mailto:sagar00001.co@gmail.com">xyz@gmail.com</a></p>
             </div>
         </div>
-        <div class="footer-right">
-            <p class="footer-company-about">
-                <span>About the company</span>
-                <strong>Sagar Developer</strong> is a Youtube channel where you can find more creative CSS Animations
-                and
-                Effects along with
-                HTML, JavaScript and Projects using C/C++.
+
+        <div class="footer-left">
+            <h3>Maryam<span>Developer</span></h3>
+
+            <p class="footer-links">
+                <a href="#">Home</a>
+                |
+                <a href="#">About</a>
+                |
+                <a href="#">Contact</a>
+                |
+                <a href="#">FAQS</a>
             </p>
-            <div class="footer-icons">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
-            </div>
+
+            <p class="footer-company-name">Copyright © 2021 <strong>SagarDeveloper</strong> All rights reserved</p>
         </div>
     </footer>
 

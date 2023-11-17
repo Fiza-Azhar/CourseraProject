@@ -42,7 +42,7 @@ if (!isset($user_id)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cssstyle.css">
 
 </head>
 
@@ -50,42 +50,40 @@ if (!isset($user_id)) {
 
     <?php include 'usermenu.php'; ?>
 
-    <div class="heading">
-        <h3>our Courses</h3>
-        <p> <a href="home.php">home</a> / courses </p>
-    </div>
 
-    <section class="products">
+    <main class="main">
+        <section class="dashboard">
+            <section class="show-products">
+                <div class="box-container">
+                    <?php
+                    $select_products = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
+                    if (mysqli_num_rows($select_products) > 0) {
+                        while ($fetch_products = mysqli_fetch_assoc($select_products)) {
+                    ?>
+                            <div class="box">
+                                <?php
+                                // Assuming $fetch_products is an array with image information
+                                $imagePath = 'uploaded_img/' . $fetch_products['image'];
+                                ?>
+                                <img src="<?php echo $imagePath; ?>" alt="">
+                                <div class="cname"><?php echo $fetch_products['coursename']; ?></div>
+                                <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
+                                <h5>Assigment & Quizez</h5>
+                                <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
+                                <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
+                                <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="option-btn">Enroll</a>
+                            </div>
+                    <?php
+                        }
+                    } else {
+                        echo '<p class="empty">no products added yet!</p>';
+                    }
+                    ?>
+                </div>
 
-        <h1 class="title">latest courses</h1>
-
-        <div class="box-container">
-
-            <?php
-            $select_courses = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
-            if (mysqli_num_rows($select_courses) > 0) {
-                while ($fetch_course = mysqli_fetch_assoc($select_courses)) {
-            ?>
-                    <form action="" method="post" class="box">
-                        <div class="cname"><?php echo $fetch_course['coursename']; ?></div>
-                        <div class="tname">$<?php echo $fetch_course['capacity']; ?>/-</div>
-                        <input type="number" name="assignment" value="<?php echo $fetch_course['assignment']; ?>">
-                        <input type="number" name="quizes" value="<?php echo $fetch_course['quizes']; ?>">
-                        <div class="cname"><?php echo $fetch_course['type']; ?></div>
-                        <input type="submit" value="Enroll" name="update_capacity" class="btn">
-                        <p>username : <span><?php echo $_SESSION['admin_name']; ?></span></p>
-                        <p>email : <span><?php echo $_SESSION['admin_email']; ?></span></p>
-                    </form>
-            <?php
-                }
-            } else {
-                echo '<p class="empty">no products added yet!</p>';
-            }
-            ?>
-
-        </div>
-
-    </section>
+            </section>
+        </section>
+    </main>
 
 
 
