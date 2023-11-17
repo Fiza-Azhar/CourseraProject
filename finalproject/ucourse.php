@@ -5,6 +5,8 @@ include 'connection.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
+$_SESSION['capacity'] = $capacitynum;
+$_SESSION['type'] = $typenum;
 
 if (!isset($user_id)) {
     header('location:login.php');
@@ -68,10 +70,12 @@ if (!isset($user_id)) {
                                 <img src="<?php echo $imagePath; ?>" alt="">
                                 <div class="cname"><?php echo $fetch_products['coursename']; ?></div>
                                 <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
+                                <div class="cname">$<?php echo $fetch_products['capacity']; ?>/-</div>
+                                <div class="cname"><?php echo $fetch_products['type']; ?></div>
                                 <h5>Assigment & Quizez</h5>
                                 <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
                                 <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
-                                <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="option-btn">Enroll</a>
+                                <a href="enroll.php" class="option-btn">Enroll</a>
                             </div>
                     <?php
                         }

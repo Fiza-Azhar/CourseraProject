@@ -43,10 +43,27 @@ CREATE TABLE `message` (
   `message` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
+
+-- Table structure for table `orders`
+
+CREATE TABLE `enroll` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `createdat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+  `name` varchar(100) NOT NULL,
+  `number` varchar(12) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `coursename` varchar(100) NOT NULL,
+  `teachername` varchar(100) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `payment_status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
 --
 
 
