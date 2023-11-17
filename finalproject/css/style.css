@@ -107,7 +107,7 @@ body {
 
 
 
-
+/*login form css*/
 
 .form-container {
   background-image: linear-gradient(to bottom,
@@ -124,10 +124,6 @@ body {
   /* Set the height to your desired value */
 
 }
-
-
-
-
 
 .right_item {
   background-color: var(--white-color);
@@ -191,60 +187,7 @@ body {
 
 
 
-
-
-
-
-
-
-/*admin header*/
-
-
-.header .flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  margin: 0 auto;
-}
-
-.header .flex .logo {
-  font-size: var(--h2-font-size);
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: var(--font-weight-extra-bold);
-}
-
-.header .flex .logo span {
-  color: var(--dark-color);
-}
-
-.header .flex .navbar a {
-  margin: 0 1rem;
-  color: var(--black);
-  text-decoration: none;
-  font-size: var(--h5-font-size);
-}
-
-.header .flex .navbar a:hover {
-  color: var(--primary-color);
-}
-
-.header .flex .icons div {
-  margin-left: 1.5rem;
-  font-size: 2.0rem;
-  cursor: pointer;
-  color: var(--dark-color);
-}
-
-.header .flex .icons div:hover {
-  color: var(--primary-color);
-}
-
-
-#menu-btn {
-  display: none;
-}
+/*end of login form css*/
 
 
 
@@ -253,40 +196,16 @@ body {
 
 
 
-/*responsive*/
-@media (max-width:768px) {
-
-  #menu-btn {
-    display: inline-block;
-  }
-}
-
-
-/*home*/
 
 
 
-.header-btn {
-  display: flex;
-  margin: auto;
-}
-
-.header-btn a {
-  text-decoration: none;
-
-}
 
 
 
-.header {
-  background-color: white;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
 
 
 
+/*
 .carousel-container {
   width: 100%;
   margin: auto;
@@ -332,4 +251,4 @@ body {
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
-}
+}*/
