@@ -5,36 +5,41 @@ include 'connection.php';
 session_start();
 
 $admin_id = $_SESSION['admin_id'];
+$user_id = $_SESSION['user_id'];
+$type = $_GET['type'];
 $capacitynum = $_SESSION['capacity'];
-$typenum = $_SESSION['type'];
-
 if (!isset($admin_id)) {
     header('location:login.php');
     exit(); // Add exit here
 }
 
-if (isset($_POST['add_course'])) {
+if (isset($_POST['enroll_course'])) {
 
     $tname = $_POST['tname']; // Use the correct variable name that is in your html 
     $cname = $_POST['cname'];
     $name = $_POST['name']; // Use the correct variable name
-    $capacity = $_POST['email'];
+    $email = $_POST['email'];
     $pnum = $_POST['pnum'];
-
-
-
-    $select_course_name = mysqli_query($conn, "SELECT coursename, teachername FROM `enroll` WHERE teachername = '$tname' AND coursename = '$cname'") or die('query failed');
-
-    if (mysqli_num_rows($select_course_name) > 0) {
-        $message[] = 'course name already added';
+    $payment = 'completed';
+    if ($type = 'free') {
+        $payment = 'completed';
     } else {
-        if ($capacitynum > 0) {
-            $capacitynum = $capacitynum - 1;
-            $add_course_query = mysqli_query($conn, "UPDATE `coursename` SET name = '$update_name', price = '$update_price' WHERE id = '$update_p_id'") or die('query failed');
-            $message[] = 'successfully added';
-        }
+        $payment = 'pending';
     }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Retrieve values from the form
+        $value1 = $_POST['capacity'];
+        $value2 = $_POST['teachername'];
+
+        // Display the values
+        echo "Value 1: " . htmlspecialchars($value1) . "<br>";
+        echo "Value 2: " . htmlspecialchars($value2) . "<br>";
+    }
+    $enroll_data = mysqli_query($conn, "INSERT INTO `enroll`(user_id,name,number, email,coursename,teachername,type ,payment_status) VALUES('$user_id','$name','$pnum' ,'$email','$cname','$tname','$type','$payment')") or die('query failed');
+    echo $capacitynum;
 }
+
 
 if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
@@ -82,7 +87,7 @@ if (isset($_GET['delete'])) {
                         <input type="email" name="email" placeholder="admin@gmail.com" required class="box">
                         <input type="text" name="cname" class="box" placeholder="Enter course name" required>
                         <input type="text" name="tname" class="box" placeholder="Enter teacher name" required>
-                        <input type="submit" value="Enroll" name="add_course" class="btn">
+                        <input type="submit" value="Enroll" name="enroll_course" class="btn">
                     </form>
                 </div>
             </section>
