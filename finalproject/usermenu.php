@@ -38,7 +38,7 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-plus"></i>
-                    <a href="#">About</a>
+                    <a href="#">About Us</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-search"></i>
@@ -61,7 +61,7 @@ if (isset($message)) {
                     <ul class="menu-items submenu">
                         <div class="menu-title">
                             <i class="fas fa-chevron-left"></i>
-                            Contact
+                            About Ourself
                         </div>
                         <li class="item">
                             <i class="fas fa-map-marker"></i>
@@ -90,7 +90,7 @@ if (isset($message)) {
     <nav class="navbar">
         <i class="fa-solid fa-bars" id="sidebar-close"></i>
         <div id="user-btn" class="fas fa-user"></div>
-        <i class="fa fa-cart-arrow-down" id="scart" aria-hidden="true"></i>
+        <a href="pending_enrollment.php"> <i class="fa-solid fa-square-check fa-lg" id="scart" style="color: #ffffff;"></i></a>
     </nav>
 
 

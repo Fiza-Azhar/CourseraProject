@@ -46,42 +46,12 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-users"></i>
-                    <a href="#">Users</a>
+                    <a href="addassignment.php">Add Assigment</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-envelope"></i>
                     <a href="rcv_query.php">Messages</a>
                 </li>
-                <li class="item">
-                    <div class="submenu-item">
-                        <i class="fas fa-chevron-right"></i>
-                        <span>Second submenu</span>
-                    </div>
-
-                    <ul class="menu-items submenu">
-                        <div class="menu-title">
-                            <i class="fas fa-chevron-left"></i>
-                            Contact
-                        </div>
-                        <li class="item">
-                            <i class="fas fa-map-marker"></i>
-                            <a href="#">Reach Us</a>
-                        </li>
-                        <li class="item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="#">Contact Us</a>
-                        </li>
-                        <li class="item">
-                            <i class="fas fa-info"></i>
-                            <a href="#">About Us</a>
-                        </li>
-                        <li class="item">
-                            <i class="fas fa-question"></i>
-                            <a href="#">FAQ's</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
     </nav>
 
@@ -90,7 +60,6 @@ if (isset($message)) {
     <nav class="navbar">
         <i class="fa-solid fa-bars" id="sidebar-close"></i>
         <div id="user-btn" class="fas fa-user"></div>
-        <i class="fa fa-cart-arrow-down" id="scart" aria-hidden="true"></i>
     </nav>
     <div class="account-box">
         <p>username : <span><?php echo $_SESSION['admin_name']; ?></span></p>

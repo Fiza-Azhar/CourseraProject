@@ -35,7 +35,7 @@ if (!isset($admin_id)) {
 
 <body>
 
-    <?php include 'usermenu.php'; ?>
+    <?php include 'admin_menu.php'; ?>
     <main class="main">
         <section class="messages">
             <h2> Messages </h2>
