@@ -37,6 +37,10 @@ if (isset($message)) {
                     <a href="admin_home.php">Home</a>
                 </li>
                 <li class="item">
+                    <i class="fas fa-home"></i>
+                    <a href="updatedel.php">update and delete</a>
+                </li>
+                <li class="item">
                     <i class="fas fa-plus"></i>
                     <a href="addcourse.php">Add Courses</a>
                 </li>

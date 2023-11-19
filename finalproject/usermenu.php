@@ -19,7 +19,7 @@ if (isset($message)) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidebar Menu for Admin Dashboard | CodingNepal</title>
+    <title>User menu</title>
     <link rel="stylesheet" href="css/style2.css" />
     <link rel="stylesheet" href="css/style.css" />
     <!-- Fontawesome CDN Link -->
@@ -46,7 +46,7 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-users"></i>
-                    <a href="#">Contact</a>
+                    <a href="user_query.php">Contact</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-envelope"></i>

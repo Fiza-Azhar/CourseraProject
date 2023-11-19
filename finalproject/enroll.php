@@ -12,7 +12,7 @@ if (!isset($user_id)) {
 }
 
 if (isset($_POST['enroll_course'])) {
-
+    $update_id = $_POST['id'];
     $tname = $_POST['tname']; // Use the correct variable name that is in your html 
     $cname = $_POST['cname'];
     $name = $_POST['name']; // Use the correct variable name
@@ -28,18 +28,14 @@ if (isset($_POST['enroll_course'])) {
     } else {
         $payment = 'completed';
     }
+    $currentDateTime = date("Y-m-d H:i:s");
     $capacity = $_POST['capacity'];
     $intcapacity = intval($capacity);
     if ($intcapacity > 0) {
         $intcap = $intcapacity - 1;
         $intcap = strval($intcap);
-        echo $intcap;
-        echo $type;
-        echo $tname;
-        echo $cname;
-        echo $assignment;
-        echo $quizes;
-        $update_data = mysqli_query($conn, "UPDATE `courses` SET coursename='$cname', teachername='$tname', capacity='$intcap', assignment='$assignment', quizes='$quizes', type='$type', image='$image' WHERE coursename='$cname' AND teachername='$tname' AND capacity='$intcap' AND assignment='$assignment' AND quizes='$quizes' AND type='$type' AND image='$image'");
+        $update_data = mysqli_query($conn, "UPDATE `courses` SET coursename='$cname', teachername='$tname', capacity='$intcap', assignment='$assignment', quizes='$quizes', type='$type', image='$image', updated_at='$currentDateTime' WHERE id='$update_id'");
+
         if (!$update_data) {
             echo "Error updating record: " . mysqli_error($conn);
         }
@@ -89,7 +85,7 @@ if (isset($_GET['delete'])) {
                 <div class="right_item">
                     <?php
                     $cid = $_GET['id'];
-                    $result = mysqli_query($conn, "SELECT * FROM `courses` where id='$cid'") or die('query failed');
+                    $result = mysqli_query($conn, "SELECT * FROM `courses` where id='$cid' AND status='1'") or die('query failed');
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
 
@@ -97,6 +93,7 @@ if (isset($_GET['delete'])) {
 
                             <form action="" method="post" enctype="multipart/form-data">
                                 <h3>add courses</h3>
+                                <input type="hidden" name="id" class="box" value="<?php echo $row['id']; ?>">
                                 <input type="text" name="tname" readonly="true" class="box" value="<?php echo $row['teachername'] ?> ">
                                 <input type="text" name="cname" readonly="true" class="box" value="<?php echo $row['coursename'] ?> ">
                                 <input type="text" name="type" readonly="true" class="box" value="<?php echo $row['type'] ?> ">

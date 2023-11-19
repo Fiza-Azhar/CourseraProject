@@ -23,14 +23,14 @@ if (isset($_POST['add_course'])) {
     $image_size = $_FILES['image']['size'];
     $image_tmp_name = $_FILES['image']['tmp_name'];
     $image_folder = 'uploaded_img/' . $image;
-
+    $currentDateTime = date("Y-m-d H:i:s");
 
     $select_course_name = mysqli_query($conn, "SELECT coursename, teachername FROM `courses` WHERE teachername = '$tname' AND coursename = '$cname'") or die('query failed');
 
     if (mysqli_num_rows($select_course_name) > 0) {
         $message[] = 'course name already added';
     } else {
-        $add_course_query = mysqli_query($conn, "INSERT INTO `courses`(coursename, teachername, capacity, assignment, quizes, type,image) VALUES('$cname', '$tname', '$capacity', '$assignment', '$quizes', '$type','$image')") or die('query failed');
+        $add_course_query = mysqli_query($conn, "INSERT INTO `courses`(coursename, teachername, capacity, assignment, quizes, type,image,updated_at) VALUES('$cname', '$tname', '$capacity', '$assignment', '$quizes', '$type','$image','$currentDateTime')") or die('query failed');
         $message[] = 'successfully added';
     }
 }

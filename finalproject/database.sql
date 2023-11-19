@@ -61,8 +61,30 @@ CREATE TABLE `enroll` (
   `payment_status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `enrollment` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `createdat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+  `name` varchar(100) NOT NULL,
+  `number` varchar(12) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `coursename` varchar(100) NOT NULL,
+  `teachername` varchar(100) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `payment_status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 
+
+CREATE TABLE `assignment` (
+  `id` int(100) NOT NULL,
+  `createdat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+  `coursename` varchar(100) NOT NULL,
+  `assigmentname` varchar(100) NOT NULL,
+  `file` varchar(100) NOT NULL
+  `datetime` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 --
 
@@ -109,6 +131,12 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `assignment`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `assignment`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 --

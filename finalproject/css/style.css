@@ -186,6 +186,15 @@ body {
 }
 
 
+.heading h3 {
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: var(--font-weight-more-bold);
+  margin-top: 20%;
+}
+
+
 
 /*end of login form css*/
 

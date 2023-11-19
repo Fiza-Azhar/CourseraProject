@@ -13,26 +13,17 @@ if (!isset($admin_id)) {
 
 if (isset($_POST['add_assigment'])) {
 
-    $tname = $_POST['tname']; // Use the correct variable name that is in your html 
-    $cname = $_POST['cname']; // Use the correct variable name
-    $capacity = $_POST['capacity'];
-    $assignment = $_POST['assignment'];
-    $quizes = $_POST['quizes'];
-    $type = $_POST['type'];
-    $image = $_FILES['image']['name'];
-    $image_size = $_FILES['image']['size'];
-    $image_tmp_name = $_FILES['image']['tmp_name'];
-    $image_folder = 'uploaded_img/' . $image;
+
+    $cname = $_POST['cname']; // // Use the correct variable name that is in your html 
+    $aname = $_POST['aname'];
+    $file = $_FILES['file']['name'];
+    $file_size = $_FILES['file']['size'];
+    $file_tmp_name = $_FILES['file']['tmp_name'];
+    $file_folder = 'uploaded_files/' . $file;
+    $meetingDateTime = $_POST['meetingDateTime'];
 
 
-    $select_course_name = mysqli_query($conn, "SELECT coursename, teachername FROM `courses` WHERE teachername = '$tname' AND coursename = '$cname'") or die('query failed');
-
-    if (mysqli_num_rows($select_course_name) > 0) {
-        $message[] = 'course name already added';
-    } else {
-        $add_course_query = mysqli_query($conn, "INSERT INTO `courses`(coursename, teachername, capacity, assignment, quizes, type,image) VALUES('$cname', '$tname', '$capacity', '$assignment', '$quizes', '$type','$image')") or die('query failed');
-        $message[] = 'successfully added';
-    }
+    $add_course_query = mysqli_query($conn, "INSERT INTO `assignment` (coursename, assigmentname, file, datetime) VALUES('$cname', '$aname', '$file_folder', '$meetingDateTime')") or die('query failed');
 }
 
 

@@ -58,6 +58,7 @@ if (!isset($user_id)) {
                                                                         } else {
                                                                             echo 'green';
                                                                         } ?>;"><?php echo $fetch_orders['payment_status']; ?></span> </p>
+                                <a href='sgetassigment.php ? coursename=<?php echo $fetch_orders['coursename'];  ?>'><button>Check Assigment</button></a>
                             </div>
                     <?php
                         }
