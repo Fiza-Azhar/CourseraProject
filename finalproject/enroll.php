@@ -4,11 +4,9 @@ include 'connection.php';
 
 session_start();
 
-$admin_id = $_SESSION['admin_id'];
 $user_id = $_SESSION['user_id'];
-$type = $_GET['type'];
-$capacitynum = $_SESSION['capacity'];
-if (!isset($admin_id)) {
+
+if (!isset($user_id)) {
     header('location:login.php');
     exit(); // Add exit here
 }
@@ -20,24 +18,34 @@ if (isset($_POST['enroll_course'])) {
     $name = $_POST['name']; // Use the correct variable name
     $email = $_POST['email'];
     $pnum = $_POST['pnum'];
+    $type = $_POST['type'];
+    $assignment = $_POST['assign'];
+    $quizes = $_POST['quz'];
+    $image = $_POST['image'];
     $payment = 'completed';
-    if ($type = 'free') {
-        $payment = 'completed';
-    } else {
+    if ($type = 'paid') {
         $payment = 'pending';
+    } else {
+        $payment = 'completed';
     }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Retrieve values from the form
-        $value1 = $_POST['capacity'];
-        $value2 = $_POST['teachername'];
-
-        // Display the values
-        echo "Value 1: " . htmlspecialchars($value1) . "<br>";
-        echo "Value 2: " . htmlspecialchars($value2) . "<br>";
+    $capacity = $_POST['capacity'];
+    $intcapacity = intval($capacity);
+    if ($intcapacity > 0) {
+        $intcap = $intcapacity - 1;
+        $intcap = strval($intcap);
+        echo $intcap;
+        echo $type;
+        echo $tname;
+        echo $cname;
+        echo $assignment;
+        echo $quizes;
+        $update_data = mysqli_query($conn, "UPDATE `courses` SET coursename='$cname', teachername='$tname', capacity='$intcap', assignment='$assignment', quizes='$quizes', type='$type', image='$image' WHERE coursename='$cname' AND teachername='$tname' AND capacity='$intcap' AND assignment='$assignment' AND quizes='$quizes' AND type='$type' AND image='$image'");
+        if (!$update_data) {
+            echo "Error updating record: " . mysqli_error($conn);
+        }
+        $select_message = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
+        $enroll_data = mysqli_query($conn, "INSERT INTO `enrollment` (user_id,name,number, email,coursename,teachername,type ,payment_status) VALUES('$user_id','$name','$pnum' ,'$email','$cname','$tname','$type','$payment')") or die('query failed');
     }
-    $enroll_data = mysqli_query($conn, "INSERT INTO `enroll`(user_id,name,number, email,coursename,teachername,type ,payment_status) VALUES('$user_id','$name','$pnum' ,'$email','$cname','$tname','$type','$payment')") or die('query failed');
-    echo $capacitynum;
 }
 
 
@@ -72,7 +80,6 @@ if (isset($_GET['delete'])) {
     <?php include 'usermenu.php'; ?>
     <main class="main">
         <section class="dashboard">
-
             <section class="sone">
             </section>
             <div class="text">
@@ -80,15 +87,32 @@ if (isset($_GET['delete'])) {
             </div>
             <section class="add-products">
                 <div class="right_item">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <h3>add courses</h3>
-                        <input type="text" name="name" class="box" placeholder="Enter Your name" required>
-                        <input type="number" min="0" name="pnum" class="box" placeholder="Enter Phone number" required>
-                        <input type="email" name="email" placeholder="admin@gmail.com" required class="box">
-                        <input type="text" name="cname" class="box" placeholder="Enter course name" required>
-                        <input type="text" name="tname" class="box" placeholder="Enter teacher name" required>
-                        <input type="submit" value="Enroll" name="enroll_course" class="btn">
-                    </form>
+                    <?php
+                    $cid = $_GET['id'];
+                    $result = mysqli_query($conn, "SELECT * FROM `courses` where id='$cid'") or die('query failed');
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                    ?>
+
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <h3>add courses</h3>
+                                <input type="text" name="tname" readonly="true" class="box" value="<?php echo $row['teachername'] ?> ">
+                                <input type="text" name="cname" readonly="true" class="box" value="<?php echo $row['coursename'] ?> ">
+                                <input type="text" name="type" readonly="true" class="box" value="<?php echo $row['type'] ?> ">
+                                <input type="hidden" name="capacity" readonly="true" class="box" value="<?php echo $row['capacity'] ?> ">
+                                <input type="hidden" name="assign" readonly="true" class="box" value="<?php echo $row['assignment'] ?> ">
+                                <input type="hidden" name="quz" readonly="true" class="box" value=" <?php echo $row['quizes'] ?> ">
+                                <input type="hidden" name="image" readonly="true" class="box" value="<?php echo $row['image'] ?> ">
+                                <input type=" text" name="name" class="box" placeholder="Enter Your name" required>
+                                <input type="number" min="0" name="pnum" class="box" placeholder="Enter Phone number" required>
+                                <input type="email" name="email" placeholder="admin@gmail.com" required class="box">
+                                <input type="submit" value="Enroll" name="enroll_course" class="btn">
+                            </form>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             </section>
 

@@ -73,7 +73,7 @@ if (!isset($user_id)) {
                                 <h5>Assigment & Quizez</h5>
                                 <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
                                 <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
-                                <a href='enroll.php ?type=<?php echo $fetch_products['type']; ?> ' class="option-btn">Enroll</a>
+                                <a href='enroll.php ?id=<?php echo $fetch_products['id']; ?> ' class="option-btn">Enroll</a>
                             </div>
                     <?php
                         }

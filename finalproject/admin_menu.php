@@ -42,7 +42,7 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-search"></i>
-                    <a href="admin_explore_courses.php">Explore Courses</a>
+                    <a href="admin_enrolled_courses.php">Explore Courses</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-users"></i>

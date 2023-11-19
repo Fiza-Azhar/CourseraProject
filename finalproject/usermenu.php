@@ -50,7 +50,7 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-envelope"></i>
-                    <a href="#">Enroll</a>
+                    <a href="enrolled_students.php">Enroll</a>
                 </li>
                 <li class="item">
                     <div class="submenu-item">
