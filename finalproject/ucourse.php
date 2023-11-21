@@ -43,6 +43,8 @@ if (!isset($user_id)) {
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/cssstyle.css">
+    <link rel="stylesheet" href="css/css3.css">
+
 
 </head>
 
@@ -56,7 +58,7 @@ if (!isset($user_id)) {
             <section class="show-products">
                 <div class="box-container">
                     <?php
-                    $select_products = mysqli_query($conn, "SELECT * FROM `courses` AND status='1'") or die('query failed');
+                    $select_products = mysqli_query($conn, "SELECT * FROM `courses` WHERE status='1'") or die('query failed');
                     if (mysqli_num_rows($select_products) > 0) {
                         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                     ?>
@@ -70,10 +72,10 @@ if (!isset($user_id)) {
                                 <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
                                 <div class="cname">Capacity: <?php echo $fetch_products['capacity']; ?>/-</div>
                                 <div class="cname"><?php echo $fetch_products['type']; ?></div>
-                                <h5>Assigment & Quizez</h5>
+
                                 <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
                                 <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
-                                <a href='enroll.php ?id=<?php echo $fetch_products['id']; ?> ' class="option-btn">Enroll</a>
+                                <div class="option-btn"><a href='enroll.php ?id=<?php echo $fetch_products['id']; ?> '>Enroll</a></div>
                             </div>
                     <?php
                         }

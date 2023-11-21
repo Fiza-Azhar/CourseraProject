@@ -1,0 +1,41 @@
+.box-container {
+    background-color: bisque;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns with equal width */
+    grid-gap: 10px;
+}
+
+/*edited*/
+.main .text {
+    margin-bottom: 13%;
+}
+
+.main h1 {
+    font-weight: 800;
+}
+
+.show-products .box-container .box .option-btn a {
+    color: white;
+    text-decoration: none;
+    padding: 2%;
+    margin: 3%;
+    padding-bottom: 2%;
+    padding-left: 60%;
+    padding-right: 50%;
+}
+
+.show-products .box-container .box .option-btn {
+    background-color: var(--primary-color);
+    text-decoration: none;
+}
+
+.show-products .box-container .box .option-btn:hover {
+    border: 2px solid white;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: rgb(112, 101, 84);
+
+}

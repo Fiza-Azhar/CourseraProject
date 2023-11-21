@@ -70,6 +70,8 @@ if (isset($_GET['delete'])) {
     <!-- custom admin css file link  -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cssstyle.css">
+    <link rel="stylesheet" href="css/css3.css">
+
 </head>
 
 <body>
@@ -79,7 +81,7 @@ if (isset($_GET['delete'])) {
             <section class="sone">
             </section>
             <div class="text">
-                <h1 class="title">Add Courses</h1>
+                <h1 class="title">Enroll Courses</h1>
             </div>
             <section class="add-products">
                 <div class="right_item">
@@ -92,7 +94,7 @@ if (isset($_GET['delete'])) {
                     ?>
 
                             <form action="" method="post" enctype="multipart/form-data">
-                                <h3>add courses</h3>
+                                <h3>Fill out this form to enroll in this courses</h3>
                                 <input type="hidden" name="id" class="box" value="<?php echo $row['id']; ?>">
                                 <input type="text" name="tname" readonly="true" class="box" value="<?php echo $row['teachername'] ?> ">
                                 <input type="text" name="cname" readonly="true" class="box" value="<?php echo $row['coursename'] ?> ">

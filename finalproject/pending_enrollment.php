@@ -26,6 +26,7 @@ if (!isset($user_id)) {
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/csssstyle.css">
+    <link rel="stylesheet" href="css/css3.css">
     <link rel="stylesheet" href="css/style.css">
 
 
@@ -33,40 +34,38 @@ if (!isset($user_id)) {
 
 <body>
 
-    <?php include 'usermenu.php'; ?>
+    <?php include 'admin_menu.php'; ?>
     <main class="main">
-        <section class="dashboard">
-            <div class="heading">
-                <h3>yYour Enrolment</h3>
-            </div>
-            <section class="placed-orders">
-                <h1 class="title">placed orders</h1>
-                <div class="box-container">
-                    <?php
-                    $enroll_query = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE user_id = '$user_id'  AND payment_status='pending'") or die('query failed');
-                    if (mysqli_num_rows($enroll_query) > 0) {
-                        while ($fetch_orders = mysqli_fetch_assoc($enroll_query)) {
-                    ?>
-                            <div class="box">
-                                <p> Name : <span><?php echo $fetch_orders['name']; ?></span> </p>
-                                <p> Number : <span><?php echo $fetch_orders['number']; ?></span> </p>
-                                <p> Email : <span><?php echo $fetch_orders['email']; ?></span> </p>
-                                <p> CourseName : <span><?php echo $fetch_orders['coursename']; ?></span> </p>
-                                <p> Teacher Name : <span><?php echo $fetch_orders['teachername']; ?></span> </p>
-                                <p> Payment status : <span style="color:<?php if ($fetch_orders['payment_status'] == 'pending') {
-                                                                            echo 'red';
-                                                                        } else {
-                                                                            echo 'green';
-                                                                        } ?>;"><?php echo $fetch_orders['payment_status']; ?></span> </p>
-                            </div>
-                    <?php
-                        }
-                    } else {
-                        echo '<p class="empty">no enrolment yet!</p>';
+        <div class="heading">
+            <h3>yYour Enrolment</h3>
+        </div>
+        <section class="placed-orders">
+            <h1 class="title">placed orders</h1>
+            <div class="box-container">
+                <?php
+                $enroll_query = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE user_id = '$user_id'  AND payment_status='pending'") or die('query failed');
+                if (mysqli_num_rows($enroll_query) > 0) {
+                    while ($fetch_orders = mysqli_fetch_assoc($enroll_query)) {
+                ?>
+                        <div class="box">
+                            <p> Name : <span><?php echo $fetch_orders['name']; ?></span> </p>
+                            <p> Number : <span><?php echo $fetch_orders['number']; ?></span> </p>
+                            <p> Email : <span><?php echo $fetch_orders['email']; ?></span> </p>
+                            <p> CourseName : <span><?php echo $fetch_orders['coursename']; ?></span> </p>
+                            <p> Teacher Name : <span><?php echo $fetch_orders['teachername']; ?></span> </p>
+                            <p> Payment status : <span style="color:<?php if ($fetch_orders['payment_status'] == 'pending') {
+                                                                        echo 'red';
+                                                                    } else {
+                                                                        echo 'green';
+                                                                    } ?>;"><?php echo $fetch_orders['payment_status']; ?></span> </p>
+                        </div>
+                <?php
                     }
-                    ?>
-                </div>
-            </section>
+                } else {
+                    echo '<p class="empty">no enrolment yet!</p>';
+                }
+                ?>
+            </div>
         </section>
     </main>
 

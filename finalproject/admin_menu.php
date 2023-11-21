@@ -65,6 +65,7 @@ if (isset($message)) {
         <i class="fa-solid fa-bars" id="sidebar-close"></i>
         <div id="user-btn" class="fas fa-user"></div>
     </nav>
+
     <div class="account-box">
         <p>username : <span><?php echo $_SESSION['admin_name']; ?></span></p>
         <p>email : <span><?php echo $_SESSION['admin_email']; ?></span></p>

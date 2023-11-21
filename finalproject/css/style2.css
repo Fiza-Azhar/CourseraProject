@@ -290,7 +290,7 @@
 }
 
 .box-container {
-    display: flex;
+    display: grid;
 }
 
 .box-container .box {
