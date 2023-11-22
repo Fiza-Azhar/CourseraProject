@@ -408,11 +408,11 @@
     cursor: pointer;
 }
 
+/*add*/
 .add-products {
     padding: 3%;
     border: 2px solid rgba(74, 74, 90, 0.5);
     margin: 2%;
-
     margin: auto;
     width: 100%;
     margin-left: 2%;
@@ -453,7 +453,7 @@
     border-color: var(--primary-color);
 }
 
-
+/*End of add Coures*/
 .dashboard .show-products {
     padding-top: 10%;
 }

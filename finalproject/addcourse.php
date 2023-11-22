@@ -35,14 +35,6 @@ if (isset($_POST['add_course'])) {
     }
 }
 
-if (isset($_GET['delete'])) {
-    $delete_id = $_GET['delete'];
-    $delete_image_query = mysqli_query($conn, "SELECT image FROM `courses` WHERE id = '$delete_id'") or die('query failed');
-    $fetch_delete_image = mysqli_fetch_assoc($delete_image_query);
-    unlink('uploaded_img/' . $fetch_delete_image['image']);
-    mysqli_query($conn, "DELETE FROM `courses` WHERE id = '$delete_id'") or die('query failed');
-    header('location:addcourses.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +44,7 @@ if (isset($_GET['delete'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin panel</title>
+    <title>add course</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -60,13 +52,15 @@ if (isset($_GET['delete'])) {
     <!-- custom admin css file link  -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cssstyle.css">
+    <link rel="stylesheet" href="css/cssf.css">
+
+
 </head>
 
 <body>
     <?php include 'admin_menu.php'; ?>
     <main class="main">
         <section class="dashboard">
-
             <section class="sone">
             </section>
             <div class="text">
@@ -75,7 +69,7 @@ if (isset($_GET['delete'])) {
             <section class="add-products">
                 <div class="right_item">
                     <form action="" method="post" enctype="multipart/form-data">
-                        <h3>add courses</h3>
+                        <h2>Add course</h2>
                         <input type="text" name="cname" class="box" placeholder="Enter course name" required>
                         <input type="text" name="tname" class="box" placeholder="Enter teacher name" required>
                         <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" placeholder="Add an image" class="box" required>
@@ -83,7 +77,7 @@ if (isset($_GET['delete'])) {
                         <input type="number" min="0" name="assignment" class="box" placeholder="Enter Assignment" required>
                         <input type="number" min="0" name="quizes" class="box" placeholder="Enter Quizes" required>
                         <input type="text" name="type" class="box" placeholder="Enter Course type" required>
-                        <input type="submit" value="add course" name="add_course" class="btn">
+                        <input type="submit" value="Add course" name="add_course" class="btn">
                     </form>
                 </div>
             </section>

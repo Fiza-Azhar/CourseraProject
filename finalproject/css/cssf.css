@@ -1,0 +1,119 @@
+.box-container {
+    background-color: bisque;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns with equal width */
+    grid-gap: 10px;
+}
+
+/*edited*/
+.main .text {
+    margin-bottom: 13%;
+}
+
+.main h1 {
+    font-weight: 800;
+}
+
+.show-products .box-container .box .option-btn a {
+    color: white;
+    text-decoration: none;
+    padding: 2%;
+    margin: 3%;
+    padding-bottom: 2%;
+    padding-left: 60%;
+    padding-right: 50%;
+}
+
+.show-products .box-container .box .option-btn {
+    background-color: var(--primary-color);
+    text-decoration: none;
+}
+
+.show-products .box-container .box .option-btn:hover {
+    border: 2px solid white;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: rgb(112, 101, 84);
+
+}
+
+
+
+.main .show-products .box-container .box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.main .show-products .box-container .box p {
+    margin: 0;
+}
+
+.main .show-products .box-container .box span {
+    font-weight: bold;
+}
+
+.main .show-products .box-container .box form {
+    margin-top: 15px;
+}
+
+.main .show-products .box-container .box select {
+    padding: 5px;
+}
+
+.main .show-products .box-container .box .option-btn,
+.delete-btn {
+    padding: 8px 12px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main .show-products .box-container .box .option-btn {
+    background-color: var(--primary-color);
+    /* Green */
+    border: none;
+}
+
+.main .show-products .box-container .box .delete-btn {
+    background-color: #f44336;
+    /* Red */
+    border: none;
+}
+
+/* Add styles for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}

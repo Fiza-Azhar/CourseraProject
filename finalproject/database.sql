@@ -124,7 +124,11 @@ CREATE TABLE `users` (
 --
 
 --
+ALTER TABLE enrollment add column updated_at DATETIME;
 
+ALTER TABLE enrollment
+ADD COLUMN status int NOT NULL
+DEFAULT 1;
 
 --
 -- Indexes for table `message`

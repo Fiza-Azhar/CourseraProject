@@ -31,22 +31,22 @@ if (isset($message)) {
         <a href="admin_home.php" class="logo">Cour<span>sera</span></a>
         <div class="menu-content">
             <ul class="menu-items">
-                <div class="menu-title">Admin Menu</div>
                 <li class="item">
                     <i class="fas fa-home"></i>
                     <a href="admin_home.php">Home</a>
                 </li>
-                <li class="item">
-                    <i class="fas fa-home"></i>
-                    <a href="updatedel.php">update and delete</a>
-                </li>
+
                 <li class="item">
                     <i class="fas fa-plus"></i>
                     <a href="addcourse.php">Add Courses</a>
                 </li>
                 <li class="item">
+                    <i class="fas fa-home"></i>
+                    <a href="updatedel.php">Update and Delete Courses</a>
+                </li>
+                <li class="item">
                     <i class="fas fa-search"></i>
-                    <a href="admin_enrolled_courses.php">Explore Courses</a>
+                    <a href="admin_enrolled_courses.php">Adjust Courses</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-users"></i>
@@ -54,7 +54,11 @@ if (isset($message)) {
                 </li>
                 <li class="item">
                     <i class="fas fa-envelope"></i>
-                    <a href="rcv_query.php">Messages</a>
+                    <a href="rcv_query.php">Check Query</a>
+                </li>
+                <li class="item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="addcontentpopup.php">Add Course Content</a>
                 </li>
         </div>
     </nav>
