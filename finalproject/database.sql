@@ -87,6 +87,22 @@ CREATE TABLE `assignment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 --
+CREATE TABLE `coursecontent` (
+  `id` int(100) NOT NULL,
+  `createdat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+  'updatedat' DATETIME ;
+  `coursename` varchar(100) NOT NULL,
+  `file` varchar(100) NOT NULL
+  `message` varchar(100) NOT NULL,
+  'status' int(100) DEFAULT 1
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+ALTER TABLE `coursecontent`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `coursecontent`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 
 -- --------------------------------------------------------

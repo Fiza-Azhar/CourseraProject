@@ -21,6 +21,7 @@ if (isset($message)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> Admin Dashboard </title>
     <link rel="stylesheet" href="css/style2.css" />
+    <link rel="stylesheet" href="css/cssf.css" />
     <link rel="stylesheet" href="css/style.css" />
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
@@ -56,10 +57,47 @@ if (isset($message)) {
                     <i class="fas fa-envelope"></i>
                     <a href="rcv_query.php">Check Query</a>
                 </li>
-                <li class="item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="addcontentpopup.php">Add Course Content</a>
-                </li>
+                <ul class="menu">
+                    <li class="item">
+                        <i class="fas fa-envelope"></i>
+                        <button id="addContent" style="color:white">>Add Course Content</button>
+                    </li>
+                </ul>
+                <dialog id="contentDialog" class="dialog" style="
+    height: 50%;
+    width: 50%;
+    margin: auto;
+    background-color:beige
+">
+                    <span class="close" onclick="closeDialog()">&times;</span>
+                    <div class="box-container">
+                        <?php
+                        $select_products = mysqli_query($conn, "SELECT * FROM `courses` where id='$admin_id' AND status='1'") or die('query failed');
+                        if (mysqli_num_rows($select_products) > 0) {
+                            while ($fetch_products = mysqli_fetch_assoc($select_products)) {
+                        ?>
+                                <div class="box">
+                                    <?php
+                                    // Assuming $fetch_products is an array with image information
+                                    $imagePath = 'uploaded_img/' . $fetch_products['image'];
+                                    ?>
+                                    <img src="<?php echo $imagePath; ?>" alt="">
+                                    <div class="cname"><?php echo $fetch_products['coursename']; ?></div>
+                                    <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
+                                    <div class="cname"><?php echo $fetch_products['capacity']; ?>/-</div>
+                                    <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
+                                    <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
+                                    <div class="cname"><?php echo $fetch_products['type']; ?></div>
+                                    <a href="assigment.php" class="btn" style="color:black">>Add Assignment </style></a>
+                                </div>
+                        <?php
+                            }
+                        } else {
+                            echo '<p class="empty">no products added yet!</p>';
+                        }
+                        ?>
+                    </div>
+                </dialog>
         </div>
     </nav>
 
@@ -69,14 +107,15 @@ if (isset($message)) {
         <i class="fa-solid fa-bars" id="sidebar-close"></i>
         <div id="user-btn" class="fas fa-user"></div>
     </nav>
+    <script>
+        document.getElementById('addContent').addEventListener('click', function() {
+            document.getElementById('contentDialog').showModal();
+        });
 
-    <div class="account-box">
-        <p>username : <span><?php echo $_SESSION['admin_name']; ?></span></p>
-        <p>email : <span><?php echo $_SESSION['admin_email']; ?></span></p>
-        <a href="logout.php" class="delete-btn">logout</a>
-        <div>new <a href="login.php">login</a> | <a href="register.php">register</a></div>
-    </div>
-
+        function closeDialog() {
+            document.getElementById('contentDialog').close();
+        }
+    </script>
 
     <script src="js/admin_jquery.js"></script>
     <script>

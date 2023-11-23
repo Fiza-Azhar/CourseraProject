@@ -1,53 +1,77 @@
+<?php
+
+include 'connection.php';
+
+session_start();
+
+$admin_id = $_SESSION['admin_id'];
+
+if (!isset($admin_id)) {
+    header('location:login.php');
+    exit(); // Add exit here
+}
+
+if (isset($_POST['add_content'])) {
+
+
+    $cname = $_POST['cname']; // // Use the correct variable name that is in your html 
+    $file = $_FILES['file']['name'];
+    $file_size = $_FILES['file']['size'];
+    $file_tmp_name = $_FILES['file']['tmp_name'];
+    $file_folder = 'uploaded_files/' . $file;
+    $tmessage = $_POST['textmessages']; // // Use the correct variable name that is in your html 
+    $currentDateTime = date("Y-m-d H:i:s");
+
+
+
+
+
+    $add_course_query = mysqli_query($conn, "INSERT INTO `coursecontent` (coursename,file, message) VALUES($cname','$file_folder', '$tmessage')") or die('query failed');
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
-    <title>Your Website</title>
+    <title>admin panel</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- custom admin css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cssstyle.css">
 </head>
 
 <body>
+    <?php include 'admin_menu.php'; ?>
+    <!-- show courses  -->
+    <main class="main">
+        <section class="dashboard">
+            <section class="add-products">
+                <div class="right_item">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <h3>ADD CONTENT</h3>
+                        <input type="text" name="cname" class="box" placeholder="Enter Course name" required>
+                        <input type="file" id="file" name="file" accept=".pdf, .doc, .docx">
+                        <input type="text" name="textmessages" class="box" placeholder="Enter any Message" required>
+                        <input type="submit" value="Add" name="add_content" class="btn">
+                    </form>
+                </div>
+            </section>
+        </section>
+    </main>
 
-    <ul class="menu">
-        <li class="item">
-            <i class="fas fa-envelope"></i>
-            <a href="addcontentpopup.php" id="openModalBtn">Add Course Content</a>
-        </li>
-    </ul>
+    <!-- custom admin js file link  -->
+    <script src="js/admin_script.js"></script>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <form action="submit_form.php" method="post">
-                <h2>Add Content Form</h2>
-                <label for="name">Name:</label>
-                <input type="text" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" name="email" required>
-
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('openModalBtn').addEventListener('click', openModal);
-
-        function openModal() {
-            document.getElementById('myModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('myModal').style.display = 'none';
-        }
-    </script>
-
+    <!-- ... (unchanged) ... -->
 </body>
 
 </html>
