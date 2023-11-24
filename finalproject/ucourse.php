@@ -63,11 +63,7 @@ if (!isset($user_id)) {
                         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                     ?>
                             <div class="box">
-                                <?php
-                                // Assuming $fetch_products is an array with image information
-                                $imagePath = 'uploaded_img/' . $fetch_products['image'];
-                                ?>
-                                <img src="<?php echo $imagePath; ?>" alt="">
+                                <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
                                 <div class="cname"><?php echo $fetch_products['coursename']; ?></div>
                                 <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
                                 <div class="cname">Capacity: <?php echo $fetch_products['capacity']; ?>/-</div>

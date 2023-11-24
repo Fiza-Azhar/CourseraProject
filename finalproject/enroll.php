@@ -5,6 +5,15 @@ include 'connection.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
+$logFile = 'logfile.txt';
+
+function logMessage($message)
+{
+    global $logFile;
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");
+    fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+    fclose($fileHandle);
+}
 
 if (!isset($user_id)) {
     header('location:login.php');
@@ -32,7 +41,7 @@ if (isset($_POST['enroll_course'])) {
     $capacity = $_POST['capacity'];
     $intcapacity = intval($capacity);
     $select_query = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
-    
+
 
     if ($intcapacity > 0) {
         $intcap = $intcapacity - 1;
@@ -45,6 +54,12 @@ if (isset($_POST['enroll_course'])) {
         $select_message = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
         $enroll_data = mysqli_query($conn, "INSERT INTO `enrollment` (user_id,name,number, email,coursename,teachername,type ,payment_status) VALUES('$user_id','$name','$pnum' ,'$email','$cname','$tname','$type','$payment')") or die('query failed');
         $message[] = 'successfully added';
+        $messagetext = "Successfully added"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
+    } else {
+        $message[] = 'There is no space in this course';
+        $messagetext = "There is no space in this course"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
     }
 }
 

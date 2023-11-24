@@ -4,6 +4,17 @@ include 'connection.php'; // Including an external file 'config.php' that likely
 
 session_start(); // Starting a session to persist data across different pages for the same user.
 
+$logFile = 'logfile.txt';
+
+function logMessage($message)
+{
+   global $logFile;
+   $fileHandle = fopen($logFile, 'a') or die("Can't open file");
+   fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+   fclose($fileHandle);
+}
+
+
 if (isset($_POST['submit'])) { // Checking if the form with the name 'submit' is submitted.
 
    $email = mysqli_real_escape_string($conn, $_POST['email']); // Escaping and storing the submitted email in the $email variable.
@@ -20,6 +31,8 @@ if (isset($_POST['submit'])) { // Checking if the form with the name 'submit' is
          $_SESSION['admin_name'] = $row['name']; // Storing admin name in the session variable.
          $_SESSION['admin_email'] = $row['email']; // Storing admin email in the session variable.
          $_SESSION['admin_id'] = $row['id']; // Storing admin ID in the session variable.
+         $messagetext = "{$row['name']} has successfully logged in"; // If no user is found, add an error message to the $message array.
+         logMessage($messagetext);
          header('location:admin_home.php'); // Redirecting to 'admin_page.php'.
 
       } elseif ($row['user_type'] == 'user') { // Checking if the user type is 'user'.
@@ -27,11 +40,15 @@ if (isset($_POST['submit'])) { // Checking if the form with the name 'submit' is
          $_SESSION['user_name'] = $row['name']; // Storing user name in the session variable.
          $_SESSION['user_email'] = $row['email']; // Storing user email in the session variable.
          $_SESSION['user_id'] = $row['id']; // Storing user ID in the session variable.
+         $messagetext = "{$row['name']} has successfully logged in"; // If no user is found, add an error message to the $message array.
+         logMessage($messagetext);
          header('location:user_home.php'); // Redirecting to 'home.php'.
 
       }
    } else {
       $message[] = 'incorrect email or password!'; // If no user is found, adding an error message to the $message array.
+      $messagetext = "incorrect email or password! or some else error are showing up"; // If no user is found, add an error message to the $message array.
+      logMessage($messagetext);
    }
 }
 
@@ -88,20 +105,3 @@ if (isset($_POST['submit'])) { // Checking if the form with the name 'submit' is
 </body>
 
 </html>
-
-/* <div class="carousel-container">
-   <div class="carousel">
-      <div class="carousel-item">
-         <img src="Images/download.jpg" alt="Image 2">
-      </div>
-      <div class="carousel-item">
-         <img src="Images/download (2).jpg" alt="Image 1">
-      </div>
-      <div class="carousel-item">
-         <img src="Images/carousal1.jpg" alt="Image 3">
-      </div>
-      <!-- Add more items as needed -->
-   </div>
-   <div class="prev" onclick="prevSlide()">❮</div>
-   <div class="next" onclick="nextSlide()">❯</div>
-</div>*/

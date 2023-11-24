@@ -2,6 +2,18 @@
 
 include 'connection.php';
 
+
+$logFile = 'logfile.txt';
+
+function logMessage($message)
+{
+    global $logFile;
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");
+    fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+    fclose($fileHandle);
+}
+
+
 if (isset($_POST['submit'])) {
 
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -14,12 +26,18 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_num_rows($select_users) > 0) {
         $message[] = 'user already exist!';
+        $messagetext = "Sorry this user have already registered"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
     } else {
         if ($pass != $cpass) {
             $message[] = 'confirm password not matched!';
+            $messagetext = "Password not matched"; // If no user is found, add an error message to the $message array.
+            logMessage($messagetext);
         } else {
             mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type) VALUES('$name', '$email', '$cpass', '$user_type')") or die('query failed');
             $message[] = 'registered successfully!';
+            $messagetext = "Sccessfully registered"; // If no user is found, add an error message to the $message array.
+            logMessage($messagetext);
             header('location:login.php');
         }
     }
