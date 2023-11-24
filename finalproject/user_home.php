@@ -1,12 +1,12 @@
 <?php
 
-include 'connection.php';
+include 'connection.php'; //this is used to connect with xampp sql (backend)
+session_start(); //superglobal in PHP to store and retrieve values
 
-session_start();
 
 $user_id = $_SESSION['user_id'];
 
-if (!isset($user_id)) {
+if (!isset($user_id)) {    //checking if user is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
 }
 
@@ -28,6 +28,7 @@ if (!isset($user_id)) {
 
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <style></style>
 </head>
 
 <body>
@@ -120,26 +121,7 @@ if (!isset($user_id)) {
 
         </section>
     </main>
-    <script>
-        // script.js
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const arrow = header.querySelector('.arrow');
-
-                // Toggle the content's display property
-                if (content.style.display === 'block') {
-                    content.style.display = 'none';
-                    arrow.style.transform = 'rotate(45deg)';
-                } else {
-                    content.style.display = 'block';
-                    arrow.style.transform = 'rotate(-135deg)';
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

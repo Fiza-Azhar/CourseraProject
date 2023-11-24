@@ -1,10 +1,8 @@
 <?php
 
-include 'connection.php';
-
-session_start();
-
-$admin_id = $_SESSION['admin_id'];
+include 'connection.php'; //this is used to connect with xampp sql (backend)
+session_start();  //superglobal in PHP to store and retrieve values
+$admin_id = $_SESSION['admin_id'];   //getting the value that we store in a session variable
 
 if (!isset($admin_id)) {
     header('location:login.php');
@@ -35,14 +33,6 @@ if (isset($_POST['add_course'])) {
     }
 }
 
-if (isset($_GET['delete'])) {
-    $delete_id = $_GET['delete'];
-    $delete_image_query = mysqli_query($conn, "SELECT image FROM `courses` WHERE id = '$delete_id'") or die('query failed');
-    $fetch_delete_image = mysqli_fetch_assoc($delete_image_query);
-    unlink('uploaded_img/' . $fetch_delete_image['image']);
-    mysqli_query($conn, "DELETE FROM `courses` WHERE id = '$delete_id'") or die('query failed');
-    header('location:addcourses.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +66,7 @@ if (isset($_GET['delete'])) {
             <section class="show-products">
                 <div class="box-container">
                     <?php
-                    $select_products = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
+                    $select_products = mysqli_query($conn, "SELECT * FROM `courses` where status ='1'") or die('query failed');
                     if (mysqli_num_rows($select_products) > 0) {
                         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                     ?>

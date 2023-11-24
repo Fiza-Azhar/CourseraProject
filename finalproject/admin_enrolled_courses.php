@@ -1,16 +1,25 @@
 <?php
 
-include 'connection.php';
-
-session_start();
-
+include 'connection.php';  //this is used to connect with xampp sql (backend)
+session_start();  //superglobal in PHP to store and retrieve values
 $admin_id = $_SESSION['admin_id'];
 $admin_name = $_SESSION['admin_name'];
+//get admin id that e stored in a session variable
+$logFile = 'logfile.txt';  //this is log file 
 
-if (!isset($admin_id)) {
+function logMessage($message)   //this is a funtion to store data in a log file
+{
+   global $logFile;
+   $fileHandle = fopen($logFile, 'a') or die("Can't open file");       //open a log file
+   fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+   fclose($fileHandle);
+}
+
+if (!isset($admin_id)) {    //checking if admin is login or not if not it ill redirect it to loginpage 
    header('location:login.php');
 }
 
+//check if payment type is paid or not 
 if (isset($_POST['update_order'])) {
 
    $order_update_id = $_POST['order_id'];
@@ -18,19 +27,25 @@ if (isset($_POST['update_order'])) {
    $currentDateTime = date("Y-m-d H:i:s");
    mysqli_query($conn, "UPDATE `enrollment` SET payment_status = '$update_payment',updated_at='$currentDateTime' WHERE id = '$order_update_id'") or die('query failed');
    $message[] = 'payment status has been updated!';
+   $messagetext = "$order_update_id payment status has been updated"; // If no user is found, add an error message to the $message array.
+   logMessage($messagetext);
 }
+
+//when deleting value means setting status from 1 to 0 
 if (isset($_POST['delete_values'])) {
    $update_id = $_POST['order_id'];
    $status = 0;
    $currentDateTime = date("Y-m-d H:i:s");
-
-
    $update_data = mysqli_query($conn, "UPDATE `enrollment` SET status='$status',updated_at='$currentDateTime' WHERE id='$update_id'");
 
    if ($update_data) {
       $message[] = 'Data has been updated!';
+      $messagetext = "Data has been deleted"; // If no user is found, add an error message to the $message array.
+      logMessage($messagetext);
    } else {
       $message[] = 'Error updating data: ' . mysqli_error($conn);
+      $messagetext = "There is some erro in deleting this"; // If no user is found, add an error message to the $message array.
+      logMessage($messagetext);
    }
 }
 ?>
@@ -63,6 +78,7 @@ if (isset($_POST['delete_values'])) {
          <section class="sone">
          </section>
          <div class="box-container">
+            <!-- Fetching data-->
             <?php
             $select_orders = mysqli_query($conn, "SELECT * FROM `enrollment` where teachername='$admin_name' AND status='1'") or die('query failed');
             if (mysqli_num_rows($select_orders) > 0) {
@@ -103,15 +119,6 @@ if (isset($_POST['delete_values'])) {
 </body>
 
 </html>
-
-<script>
-   let userBox = document.querySelector('.header .header-2 .user-box');
-
-   document.querySelector('#user-btn').onclick = () => {
-      userBox.classList.toggle('active');
-      navbar.classList.remove('active');
-   }
-</script>
 <script>
    const sidebar = document.querySelector(".sidebar");
    const sidebarClose = document.querySelector("#sidebar-close");

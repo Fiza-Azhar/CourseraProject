@@ -1,13 +1,21 @@
 <?php
 
-include 'connection.php';
-
-session_start();
+include 'connection.php'; //this is used to connect with xampp sql (backend)
+session_start(); //superglobal in PHP to store and retrieve values
 
 $admin_id = $_SESSION['admin_id'];
 $admin_name = $_SESSION['admin_name'];
 
-if (!isset($admin_id)) {
+$logFile = 'logfile.txt';  //this is log file 
+
+function logMessage($message)   //this is a funtion to store data in a log file
+{
+    global $logFile;
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");       //open a log file
+    fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+    fclose($fileHandle);
+}
+if (!isset($admin_id)) { //checking if admin is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
 }
 
@@ -28,6 +36,8 @@ if (isset($_POST['update_values'])) {
 
     if ($update_data) {
         $message[] = 'Data has been updated!';
+        $messagetext = "Data has been updated"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
     } else {
         $message[] = 'Error updating data: ' . mysqli_error($conn);
     }
@@ -43,8 +53,12 @@ if (isset($_POST['delete_values'])) {
 
     if ($update_data) {
         $message[] = 'Data has been updated!';
+        $messagetext = "Data has been deleted"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
     } else {
         $message[] = 'Error updating data: ' . mysqli_error($conn);
+        $messagetext = "There is some erro while deleting this record"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
     }
 }
 
@@ -86,6 +100,7 @@ if (isset($_POST['delete_values'])) {
                 if (mysqli_num_rows($select_orders) > 0) {
                     while ($row = mysqli_fetch_assoc($select_orders)) {
                 ?>
+                        <!--Update and delete courses-->
                         <div class="box">
                             <form method="post" action="">
                                 <input type="hidden" name="id" class="box" value="<?php echo $row['id']; ?>">

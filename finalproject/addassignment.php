@@ -1,12 +1,14 @@
 <?php
 
-include 'connection.php';
+include 'connection.php'; //this is used to connect with xampp sql (backend)
 
-session_start();
+session_start();       //superglobal in PHP to store and retrieve values
 
 $admin_id = $_SESSION['admin_id'];
+$admin_name = $_SESSION['admin_name'];
 
-if (!isset($admin_id)) {
+
+if (!isset($admin_id)) {    //checking if admin is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
     exit(); // Add exit here
 }
@@ -19,7 +21,7 @@ if (!isset($admin_id)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin panel</title>
+    <title>add assigment</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -31,25 +33,21 @@ if (!isset($admin_id)) {
 
 <body>
     <?php include 'admin_menu.php'; ?>
-    <!-- product CRUD section starts  -->
-
-
-
-    <!-- product CRUD section ends -->
 
     <!-- show courses  -->
     <main class="main">
         <section class="dashboard">
             <section class="show-products">
                 <div class="box-container">
+                    <!-- show data in a format from sql table  -->
                     <?php
-                    $select_products = mysqli_query($conn, "SELECT * FROM `courses` where id='$admin_id' AND status='1'") or die('query failed');
+                    $select_products = mysqli_query($conn, "SELECT * FROM `courses` where teachername='$admin_name' AND status='1'") or die('query failed');
                     if (mysqli_num_rows($select_products) > 0) {
                         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                     ?>
                             <div class="box">
                                 <?php
-                                // Assuming $fetch_products is an array with image information
+                                // Assuming $fetch_products is an array with image information this fetch_product is used to fetch all row 
                                 $imagePath = 'uploaded_img/' . $fetch_products['image'];
                                 ?>
                                 <img src="<?php echo $imagePath; ?>" alt="">

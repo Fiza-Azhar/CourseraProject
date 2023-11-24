@@ -47,7 +47,7 @@ if (!isset($admin_id)) {
 
                 ?>
                         <div class="box">
-                            <p> <span> Id </span> <span><?php echo $fetch_message['user_id']; ?></span> </p>
+                            <p class="box"> <span> Id </span> <span><?php echo $fetch_message['user_id']; ?></span> </p>
                             <p><span> Name </span>: <span><?php echo $fetch_message['name']; ?></span> </p>
                             <p> <span>Number</span> : <span><?php echo $fetch_message['number']; ?></span> </p>
                             <p> <span>Email </span>: <span><?php echo $fetch_message['email']; ?></span> </p>

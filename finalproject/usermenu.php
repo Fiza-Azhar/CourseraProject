@@ -1,5 +1,5 @@
 <?php
-if (isset($message)) {
+if (isset($message)) {  //this is used to display a message on top
     foreach ($message as $message) {
         echo '
       <div class="message">
@@ -31,6 +31,7 @@ if (isset($message)) {
         <a href="admin_home.php" class="logo">Cour<span>sera</span></a>
         <div class="menu-content">
             <ul class="menu-items">
+                <!--simple menu for user-->
                 <li class="item">
                     <i class="fas fa-home"></i>
                     <a href="user_home.php">Home</a>
@@ -72,7 +73,7 @@ if (isset($message)) {
                         </li>
                         <li class="item">
                             <i class="fas fa-info"></i>
-                            <a href="#">About Us</a>
+                            <a href="rating.php">Rate Us</a>
                         </li>
                         <li class="item">
                             <i class="fas fa-question"></i>
@@ -91,10 +92,7 @@ if (isset($message)) {
         <div id="user-btn" class="fas fa-user"></div>
         <a href="pending_enrollment.php"> <i class="fa-solid fa-square-check fa-lg" id="scart" style="color: #ffffff;"></i></a>
     </nav>
-
-
-
-
+    <!--javascript of menu-->
     <script>
         const sidebar = document.querySelector(".sidebar");
         const sidebarClose = document.querySelector("#sidebar-close");

@@ -1,12 +1,10 @@
 <?php
 
-include 'connection.php';
-
-session_start();
-
+include 'connection.php'; //this is used to connect with xampp sql (backend)
+session_start(); //superglobal in PHP to store and retrieve values
 $admin_id = $_SESSION['admin_id'];
 
-if (!isset($admin_id)) {
+if (!isset($admin_id)) {    //checking if admin is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
 }
 
@@ -31,6 +29,7 @@ if (!isset($admin_id)) {
 <body>
     <?php include 'admin_menu.php'; ?>
     <main class="main">
+        <!-- this is admn dashboard-->
         <section class="dashboard">
             <section class="sone">
             </section>

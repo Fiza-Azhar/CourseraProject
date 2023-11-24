@@ -38,6 +38,7 @@ if (isset($message)) {
         <a href="admin_home.php" class="logo">Cour<span>sera</span></a>
         <div class="menu-content">
             <ul class="menu-items">
+                <!-- This is just a simple menu page-->
                 <li class="item">
                     <i class="fas fa-home"></i>
                     <a href="admin_home.php">Home</a>
@@ -70,8 +71,8 @@ if (isset($message)) {
                     </li>
                 </ul>
                 <dialog id="contentDialog" class="dialog" style="
-    height: 50%;
-    width: 50%;
+    height: 80%;
+    width: 80%;
     margin: auto;
     background-color:beige;
     display:block
@@ -89,13 +90,13 @@ if (isset($message)) {
                                     $imagePath = 'uploaded_img/' . $fetch_products['image'];
                                     ?>
                                     <img src="<?php echo $imagePath; ?>" alt="">
-                                    <div class="cname"><?php echo $fetch_products['coursename']; ?></div>
-                                    <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
-                                    <div class="cname"><?php echo $fetch_products['capacity']; ?>/-</div>
-                                    <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
-                                    <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
-                                    <div class="cname"><?php echo $fetch_products['type']; ?></div>
-                                    <a href="addcontentpopup.php" class="btn" style="color:black">>Add Content </style></a>
+                                    <div class="box"><?php echo $fetch_products['coursename']; ?></div>
+                                    <div class="box"><?php echo $fetch_products['teachername']; ?></div>
+                                    <div class="box"><?php echo $fetch_products['capacity']; ?>/-</div>
+                                    <input class="box" type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
+                                    <input class="box" type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
+                                    <div class="box"><?php echo $fetch_products['type']; ?></div>
+                                    <a href="addcontentpopup.php" class="btn" style="color:black">Add Content </style></a>
                                 </div>
                         <?php
                             }

@@ -59,7 +59,45 @@ if (isset($_POST['submit'])) {
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            transition: opacity 0.75s, visibility 0.75s;
+        }
 
+        .loader--hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader::after {
+            content: "";
+            width: 75px;
+            height: 75px;
+            border: 15px solid #dddddd;
+            border-top-color: blue;
+            border-radius: 50%;
+            animation: loading 0.75s ease infinite;
+        }
+
+        @keyframes loading {
+            from {
+                transform: rotate(0turn);
+            }
+
+            to {
+                transform: rotate(1turn);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -79,6 +117,7 @@ if (isset($_POST['submit'])) {
     }
     ?>
     <div class="form-container">
+        <div class="loader"></div>
         <div class="right_item">
             <form action="" method="post">
                 <h3>Register Now</h3>
@@ -100,7 +139,7 @@ if (isset($_POST['submit'])) {
             </form>
         </div>
     </div>
-
+    <script src="js/loader.js"></script>
 </body>
 
 </html>

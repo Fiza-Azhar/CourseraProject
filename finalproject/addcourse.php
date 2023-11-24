@@ -1,21 +1,22 @@
 <?php
 
-include 'connection.php';
+include 'connection.php'; //this is used to connect with xampp sql (backend)
 
-session_start();
-$logFile = 'logfile.txt';
+session_start(); //superglobal in PHP to store and retrieve values
 
-function logMessage($message)
+$logFile = 'logfile.txt';  //this is log file 
+
+function logMessage($message)   //this is a funtion to store data in a log file
 {
     global $logFile;
-    $fileHandle = fopen($logFile, 'a') or die("Can't open file");
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");       //open a log file
     fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
     fclose($fileHandle);
 }
 
-$admin_id = $_SESSION['admin_id'];
+$admin_id = $_SESSION['admin_id'];              //get admin id that e stored in a session variable
 
-if (!isset($admin_id)) {
+if (!isset($admin_id)) {    //checking if admin is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
     exit(); // Add exit here
 }
@@ -35,7 +36,7 @@ if (isset($_POST['add_course'])) {
     $currentDateTime = date("Y-m-d H:i:s");
 
     $select_course_name = mysqli_query($conn, "SELECT coursename, teachername FROM `courses` WHERE teachername = '$tname' AND coursename = '$name'") or die('query failed');
-
+    //checking if course is already added or not with the same teacher name
     if (mysqli_num_rows($select_course_name) > 0) {
         $message[] = 'course name already added';
         $messagetext = "$name with $tname  has already registered"; // If no user is found, add an error message to the $message array.
@@ -66,8 +67,6 @@ if (isset($_POST['add_course'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cssstyle.css">
     <link rel="stylesheet" href="css/cssf.css">
-
-
 </head>
 
 <body>
@@ -83,6 +82,7 @@ if (isset($_POST['add_course'])) {
                 <div class="right_item">
                     <form action="" method="post" enctype="multipart/form-data">
                         <h2>Add course</h2>
+                        <!--basic html form -->
                         <input type="text" name="cname" class="box" placeholder="Enter course name" required>
                         <input type="text" name="tname" class="box" placeholder="Enter teacher name" required>
                         <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
@@ -97,15 +97,6 @@ if (isset($_POST['add_course'])) {
 
         </section>
     </main>
-    <!-- product CRUD section starts  -->
-
-
-
-    <!-- product CRUD section ends -->
-
-    <!-- show courses  -->
-
-
     <!-- custom admin js file link  -->
     <script src="js/admin_script.js"></script>
 

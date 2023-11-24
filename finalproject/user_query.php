@@ -1,15 +1,14 @@
 <?php
 
-include 'connection.php';
-
-session_start();
+include 'connection.php'; //this is used to connect with xampp sql (backend)
+session_start(); //superglobal in PHP to store and retrieve values
 
 $user_id = $_SESSION['user_id'];
 
-if (!isset($user_id)) {
+if (!isset($user_id)) {    //checking if admin is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
 }
-
+//backend for submit button
 if (isset($_POST['send'])) {
 
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -52,12 +51,12 @@ if (isset($_POST['send'])) {
 </head>
 
 <body>
-
     <?php include 'usermenu.php'; ?>
     <main class="main">
         <section class="sone">
         </section>
         <section id="section8">
+            <!--Contact Us form-->
             <div class="sec-form">
                 <h2>Send any query</h2>
                 <form id="simple-form" action="" method="post">
@@ -71,14 +70,6 @@ if (isset($_POST['send'])) {
             </div>
         </section>
     </main>
-
-
-
-
-
-
-
-
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
 
