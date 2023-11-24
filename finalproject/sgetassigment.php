@@ -30,7 +30,7 @@ if (!isset($admin_id)) {
 </head>
 
 <body>
-    <?php include 'admin_menu.php'; ?>
+    <?php include 'usermenu.php'; ?>
     <!-- product CRUD section starts  -->
 
 

@@ -24,11 +24,13 @@
     padding-bottom: 2%;
     padding-left: 60%;
     padding-right: 50%;
+    margin-top: 10%;
 }
 
 .show-products .box-container .box .option-btn {
     background-color: var(--primary-color);
     text-decoration: none;
+    margin-top: 4%;
 }
 
 .show-products .box-container .box .option-btn:hover {
@@ -108,16 +110,8 @@ button {
     cursor: pointer;
 }
 
-.dialog {
-    display: none;
+.dialog {}
 
-}
-
-#contentDialog {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-}
 
 .dialog-content {
     background-color: #fff;
@@ -159,4 +153,62 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #45a049;
+}
+
+#section8 {
+    box-sizing: border-box;
+    width: 700px;
+    border: 2px solid white;
+    text-align: center;
+    margin-left: 9%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: auto;
+}
+
+#section8 form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#simple-form {
+    display: block;
+
+}
+
+.sec-form {
+    position: relative;
+    z-index: 1;
+    margin-bottom: -40%;
+    margin-top: 5%;
+}
+
+#section8 input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+#section8 textarea {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 20px;
+
+}
+
+#section8 form a {
+    padding: 18px 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 200px;
+}
+
+#section8 form a:hover {
+    background-color: var(--primary-color);
 }

@@ -44,6 +44,8 @@ if (isset($_POST['add_assigment'])) {
     <!-- custom admin css file link  -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cssstyle.css">
+    <link rel="stylesheet" href="css/cssf.css">
+
 </head>
 
 <body>
@@ -57,15 +59,17 @@ if (isset($_POST['add_assigment'])) {
     <!-- show courses  -->
     <main class="main">
         <section class="dashboard">
+            <section class="sone">
+            </section>
             <section class="add-products">
                 <div class="right_item">
                     <form action="" method="post" enctype="multipart/form-data">
-                        <h3>add courses</h3>
+                        <h3>Add Assigment</h3>
                         <input type="text" name="aname" class="box" placeholder="Enter Assigment Name" required>
                         <input type="text" name="cname" class="box" placeholder="Enter Course Name" required>
-                        <input type="file" id="file" name="file" accept=".pdf, .doc, .docx">
-                        <input type="datetime-local" id="meetingDateTime" name="meetingDateTime" required>
-                        <input type="submit" value="add course" name="add_assigment" class="btn">
+                        <input type="file" id="file" name="file" class="box" accept=".pdf, .doc, .docx">
+                        <input type="datetime-local" id="meetingDateTime" class="box" name="meetingDateTime" placeholder="Enter Due Date" required>
+                        <input type="submit" value="Add" name="add_assigment" class="btn">
                     </form>
                 </div>
             </section>

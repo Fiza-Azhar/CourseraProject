@@ -31,7 +31,6 @@ if (isset($message)) {
         <a href="admin_home.php" class="logo">Cour<span>sera</span></a>
         <div class="menu-content">
             <ul class="menu-items">
-                <div class="menu-title">User Menu</div>
                 <li class="item">
                     <i class="fas fa-home"></i>
                     <a href="user_home.php">Home</a>
@@ -55,7 +54,7 @@ if (isset($message)) {
                 <li class="item">
                     <div class="submenu-item">
                         <i class="fas fa-chevron-right"></i>
-                        <span>Second submenu</span>
+                        <span>Aproach Pages</span>
                     </div>
 
                     <ul class="menu-items submenu">

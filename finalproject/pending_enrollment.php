@@ -34,13 +34,10 @@ if (!isset($user_id)) {
 
 <body>
 
-    <?php include 'admin_menu.php'; ?>
+    <?php include 'usermenu.php'; ?>
     <main class="main">
-        <div class="heading">
-            <h3>yYour Enrolment</h3>
-        </div>
-        <section class="placed-orders">
-            <h1 class="title">placed orders</h1>
+        <section class="dashboard">
+            <section class="sone"></section>
             <div class="box-container">
                 <?php
                 $enroll_query = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE user_id = '$user_id'  AND payment_status='pending'") or die('query failed');
@@ -66,6 +63,8 @@ if (!isset($user_id)) {
                 }
                 ?>
             </div>
+        </section>
+
         </section>
     </main>
 

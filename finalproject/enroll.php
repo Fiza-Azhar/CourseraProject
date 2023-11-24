@@ -31,6 +31,9 @@ if (isset($_POST['enroll_course'])) {
     $currentDateTime = date("Y-m-d H:i:s");
     $capacity = $_POST['capacity'];
     $intcapacity = intval($capacity);
+    $select_query = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
+    
+
     if ($intcapacity > 0) {
         $intcap = $intcapacity - 1;
         $intcap = strval($intcap);
@@ -41,18 +44,10 @@ if (isset($_POST['enroll_course'])) {
         }
         $select_message = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
         $enroll_data = mysqli_query($conn, "INSERT INTO `enrollment` (user_id,name,number, email,coursename,teachername,type ,payment_status) VALUES('$user_id','$name','$pnum' ,'$email','$cname','$tname','$type','$payment')") or die('query failed');
+        $message[] = 'successfully added';
     }
 }
 
-
-if (isset($_GET['delete'])) {
-    $delete_id = $_GET['delete'];
-    $delete_image_query = mysqli_query($conn, "SELECT image FROM `courses` WHERE id = '$delete_id'") or die('query failed');
-    $fetch_delete_image = mysqli_fetch_assoc($delete_image_query);
-    unlink('uploaded_img/' . $fetch_delete_image['image']);
-    mysqli_query($conn, "DELETE FROM `courses` WHERE id = '$delete_id'") or die('query failed');
-    header('location:addcourses.php');
-}
 ?>
 
 <!DOCTYPE html>

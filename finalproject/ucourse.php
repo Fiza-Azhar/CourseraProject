@@ -43,7 +43,7 @@ if (!isset($user_id)) {
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/cssstyle.css">
-    <link rel="stylesheet" href="css/css3.css">
+    <link rel="stylesheet" href="css/cssf.css">
 
 
 </head>
@@ -75,7 +75,7 @@ if (!isset($user_id)) {
 
                                 <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
                                 <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
-                                <div class="option-btn"><a href='enroll.php ?id=<?php echo $fetch_products['id']; ?> '>Enroll</a></div>
+                                <div class="option-btn"><a href='enroll.php ?id=<?php echo $fetch_products['id']; ?> ' class="option-btn">Enroll</a></div>
                             </div>
                     <?php
                         }

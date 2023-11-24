@@ -34,6 +34,7 @@ if (!isset($admin_id)) {
         <section class="dashboard">
             <section class="sone">
             </section>
+
             <div class="text">
                 <h1 class="title">Home</h1>
             </div>

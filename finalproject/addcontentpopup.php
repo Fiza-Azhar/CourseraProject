@@ -54,12 +54,14 @@ if (isset($_POST['add_content'])) {
     <!-- show courses  -->
     <main class="main">
         <section class="dashboard">
+            <section class="sone">
+            </section>
             <section class="add-products">
                 <div class="right_item">
                     <form action="" method="post" enctype="multipart/form-data">
                         <h3>ADD CONTENT</h3>
                         <input type="text" name="cname" class="box" placeholder="Enter Course name" required>
-                        <input type="file" id="file" name="file" accept=".pdf, .doc, .docx">
+                        <input type="file" id="file" name="file" class="box" accept=".pdf, .doc, .docx">
                         <input type="text" name="textmessages" class="box" placeholder="Enter any Message" required>
                         <input type="submit" value="Add" name="add_content" class="btn">
                     </form>

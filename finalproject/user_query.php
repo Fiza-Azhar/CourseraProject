@@ -45,6 +45,8 @@ if (isset($_POST['send'])) {
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cssstyle.css">
+    <link rel="stylesheet" href="css/cssf.css">
+
 
 
 </head>
@@ -53,25 +55,20 @@ if (isset($_POST['send'])) {
 
     <?php include 'usermenu.php'; ?>
     <main class="main">
-        <section class="dashboard">
-
-            <section class="sone">
-            </section>
-            <div class="heading">
-                <h3>Contact us</h3>
-            </div>
-
-            <section class="contact">
-                <form action="" method="post">
-                    <input type="text" name="name" required placeholder="enter your name" class="box">
-                    <input type="email" name="email" required placeholder="enter your email" class="box">
-                    <input type="number" name="number" required placeholder="enter your number" class="box">
-                    <input type="text" name="tname" required placeholder="enter your name" class="box">
-                    <textarea name="message" class="box" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
-                    <input type="submit" value="send message" name="send" class="btn">
+        <section class="sone">
+        </section>
+        <section id="section8">
+            <div class="sec-form">
+                <h2>Send any query</h2>
+                <form id="simple-form" action="" method="post">
+                    <input type="text" name="name" required placeholder="Enter your name" class="box">
+                    <input type="email" name="email" required placeholder="Enter your email" class="box">
+                    <input type="number" name="number" required placeholder="Enter your number" class="box">
+                    <input type="text" name="tname" required placeholder="Enter your teacher name" class="box">
+                    <textarea name="message" class="box" placeholder="Enter your message" id="" cols="25" rows="10"></textarea>
+                    <a><input type="submit" value="Send Message" name="send" class="btn"></a>
                 </form>
-
-            </section>
+            </div>
         </section>
     </main>
 

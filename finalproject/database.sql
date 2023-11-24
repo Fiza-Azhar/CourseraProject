@@ -89,8 +89,8 @@ CREATE TABLE `assignment` (
 --
 CREATE TABLE `coursecontent` (
   `id` int(100) NOT NULL,
-  `createdat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
-  'updatedat' DATETIME ;
+  `createdat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'updatedat' DATETIME,
   `coursename` varchar(100) NOT NULL,
   `file` varchar(100) NOT NULL
   `message` varchar(100) NOT NULL,

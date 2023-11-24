@@ -1,4 +1,10 @@
 <?php
+$admin_id = $_SESSION['admin_id'];
+
+if (!isset($admin_id)) {
+    header('location:login.php');
+    exit(); // Add exit here
+}
 if (isset($message)) {
     foreach ($message as $message) {
         echo '
@@ -60,14 +66,15 @@ if (isset($message)) {
                 <ul class="menu">
                     <li class="item">
                         <i class="fas fa-envelope"></i>
-                        <button id="addContent" style="color:white">>Add Course Content</button>
+                        <a><button id="addContent" style="color:white; font-weight: 900px">Add Course Content</button></a>
                     </li>
                 </ul>
                 <dialog id="contentDialog" class="dialog" style="
     height: 50%;
     width: 50%;
     margin: auto;
-    background-color:beige
+    background-color:beige;
+    display:block
 ">
                     <span class="close" onclick="closeDialog()">&times;</span>
                     <div class="box-container">
@@ -88,7 +95,7 @@ if (isset($message)) {
                                     <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
                                     <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
                                     <div class="cname"><?php echo $fetch_products['type']; ?></div>
-                                    <a href="assigment.php" class="btn" style="color:black">>Add Assignment </style></a>
+                                    <a href="addcontentpopup.php" class="btn" style="color:black">>Add Content </style></a>
                                 </div>
                         <?php
                             }
@@ -105,7 +112,6 @@ if (isset($message)) {
 
     <nav class="navbar">
         <i class="fa-solid fa-bars" id="sidebar-close"></i>
-        <div id="user-btn" class="fas fa-user"></div>
     </nav>
     <script>
         document.getElementById('addContent').addEventListener('click', function() {
