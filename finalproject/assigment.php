@@ -64,6 +64,7 @@ if (isset($_POST['add_assigment'])) {
                     </form>
                 </div>
             </section>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
 

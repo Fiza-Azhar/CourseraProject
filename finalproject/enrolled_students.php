@@ -54,7 +54,7 @@ if (!isset($user_id)) {
                                                                     } else {
                                                                         echo 'green';
                                                                     } ?>;"><?php echo $fetch_orders['payment_status']; ?></span> </p>
-                            <a href='sgetassigment.php ? coursename=<?php echo $fetch_orders['coursename'];  ?>'><button>Check Assigment</button></a>
+                            <a href='sgetassigment.php ? coursename=<?php echo $fetch_orders['coursename'];  ?>' style="padding :1%; color:white; background-color:red"><button>Check Assigment</button></a>
                         </div>
                 <?php
                     }
@@ -63,8 +63,10 @@ if (!isset($user_id)) {
                 }
                 ?>
             </div>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
+
 
     <!-- custom js file link  -->
     <script src="js/script.js"></script>

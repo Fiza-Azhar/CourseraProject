@@ -1,5 +1,6 @@
 <?php
 $admin_id = $_SESSION['admin_id'];
+$admin_name = $_SESSION['admin_name'];
 
 if (!isset($admin_id)) {
     header('location:login.php');
@@ -80,7 +81,7 @@ if (isset($message)) {
                     <span class="close" onclick="closeDialog()">&times;</span>
                     <div class="box-container">
                         <?php
-                        $select_products = mysqli_query($conn, "SELECT * FROM `courses` where id='$admin_id' AND status='1'") or die('query failed');
+                        $select_products = mysqli_query($conn, "SELECT * FROM `courses` where teachername='$admin_name' AND status='1'") or die('query failed');
                         if (mysqli_num_rows($select_products) > 0) {
                             while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                         ?>

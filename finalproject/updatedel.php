@@ -144,6 +144,7 @@ if (isset($_POST['delete_values'])) {
                 }
                 ?>
             </div>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
     <!-- custom admin js file link  -->

@@ -53,23 +53,27 @@ if (isset($_POST['send'])) {
 <body>
     <?php include 'usermenu.php'; ?>
     <main class="main">
-        <section class="sone">
-        </section>
-        <section id="section8">
-            <!--Contact Us form-->
-            <div class="sec-form">
-                <h2>Send any query</h2>
-                <form id="simple-form" action="" method="post">
-                    <input type="text" name="name" required placeholder="Enter your name" class="box">
-                    <input type="email" name="email" required placeholder="Enter your email" class="box">
-                    <input type="number" name="number" required placeholder="Enter your number" class="box">
-                    <input type="text" name="tname" required placeholder="Enter your teacher name" class="box">
-                    <textarea name="message" class="box" placeholder="Enter your message" id="" cols="25" rows="10"></textarea>
-                    <a><input type="submit" value="Send Message" name="send" class="btn"></a>
-                </form>
+        <section class="dashboard">
+            <img src="Images/carousal2.jpg" height="450px" width="100%">
+            <div class="box-container">
+                <section id="section8">
+                    <!--Contact Us form-->
+                    <div class="sec-form" style="margin-bottom :0%">
+                        <h2>Send any query</h2>
+                        <form id="simple-form" action="" method="post">
+                            <input type="text" name="name" required placeholder="Enter your name" class="box">
+                            <input type="email" name="email" required placeholder="Enter your email" class="box">
+                            <input type="number" name="number" required placeholder="Enter your number" class="box">
+                            <input type="text" name="tname" required placeholder="Enter your teacher name" class="box">
+                            <textarea name="message" class="box" placeholder="Enter your message" id="" cols="25" rows="10"></textarea>
+                            <a><input type="submit" value="Send Message" name="send" class="btn"></a>
+                        </form>
+                    </div>
             </div>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
+
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
 

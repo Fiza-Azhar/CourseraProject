@@ -38,7 +38,7 @@ if (isset($message)) {  //this is used to display a message on top
                 </li>
                 <li class="item">
                     <i class="fas fa-plus"></i>
-                    <a href="#">About Us</a>
+                    <a href="about.php">About Us</a>
                 </li>
                 <li class="item">
                     <i class="fas fa-search"></i>
@@ -64,12 +64,8 @@ if (isset($message)) {  //this is used to display a message on top
                             About Ourself
                         </div>
                         <li class="item">
-                            <i class="fas fa-map-marker"></i>
-                            <a href="#">Reach Us</a>
-                        </li>
-                        <li class="item">
                             <i class="fas fa-envelope"></i>
-                            <a href="#">Contact Us</a>
+                            <a href="user_query.php">Contact Us</a>
                         </li>
                         <li class="item">
                             <i class="fas fa-info"></i>
@@ -89,7 +85,6 @@ if (isset($message)) {  //this is used to display a message on top
 
     <nav class="navbar">
         <i class="fa-solid fa-bars" id="sidebar-close"></i>
-        <div id="user-btn" class="fas fa-user"></div>
         <a href="pending_enrollment.php"> <i class="fa-solid fa-square-check fa-lg" id="scart" style="color: #ffffff;"></i></a>
     </nav>
     <!--javascript of menu-->

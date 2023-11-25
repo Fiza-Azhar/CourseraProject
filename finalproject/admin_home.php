@@ -7,9 +7,7 @@ $admin_id = $_SESSION['admin_id'];
 if (!isset($admin_id)) {    //checking if admin is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
 }
-
 ?>
-
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
@@ -35,7 +33,7 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
             </section>
 
             <div class="text">
-                <h1 class="title">Home</h1>
+                <h1 class="title">Admin dashboard</h1>
             </div>
             <div class="box-container">
                 <div class="box">
@@ -44,7 +42,7 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
                     $number_of_users = mysqli_num_rows($select_users);
                     ?>
                     <h3><?php echo $number_of_users; ?></h3>
-                    <p>Normal users</p>
+                    <p>Student who are logged in</p>
                 </div>
 
                 <div class="box">
@@ -53,7 +51,7 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
                     $number_of_admins = mysqli_num_rows($select_admins);
                     ?>
                     <h3><?php echo $number_of_admins; ?></h3>
-                    <p>Admin users</p>
+                    <p>Teachers who are logged in</p>
                 </div>
 
                 <div class="box">
@@ -64,18 +62,17 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
                     <h3><?php echo $number_of_account; ?></h3>
                     <p>Total accounts</p>
                 </div>
-
-
-
+                <div class="box">
+                    <?php
+                    $select_account = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
+                    $number_of_account = mysqli_num_rows($select_account);
+                    ?>
+                    <h3><?php echo $number_of_account; ?></h3>
+                    <p>Total Course</p>
+                </div>
             </div>
-
+            <?php include 'footer.php'; ?>
         </section>
-
-
-
-
-
-
     </main>
     <!-- custom admin js file link  -->
     <script src="js/admin_jquery.js"></script>

@@ -59,6 +59,7 @@ if (isset($_POST['add_content'])) {
                     </form>
                 </div>
             </section>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
 

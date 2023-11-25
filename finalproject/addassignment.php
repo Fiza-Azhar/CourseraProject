@@ -68,6 +68,7 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
                 </div>
 
             </section>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
 

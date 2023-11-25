@@ -61,7 +61,7 @@ if (!isset($admin_id)) {
                 }
                 ?>
             </div>
-
+            <?php include 'footer.php'; ?>
         </section>
     </main>
 

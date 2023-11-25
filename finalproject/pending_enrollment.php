@@ -64,7 +64,7 @@ if (!isset($user_id)) {
                 ?>
             </div>
         </section>
-
+        <?php include 'footer.php'; ?>
         </section>
     </main>
 

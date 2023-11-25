@@ -31,13 +31,7 @@ if (!isset($admin_id)) {
 
 <body>
     <?php include 'usermenu.php'; ?>
-    <!-- product CRUD section starts  -->
-
-
-
-    <!-- product CRUD section ends -->
-
-    <!-- show courses  -->
+    <!-- show assigment  -->
     <main class="main">
         <section class="dashboard">
             <section class="show-products">
@@ -63,9 +57,9 @@ if (!isset($admin_id)) {
                 </div>
 
             </section>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
-
     <!-- custom admin js file link  -->
     <script src="js/admin_script.js"></script>
 

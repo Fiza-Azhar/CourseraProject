@@ -55,7 +55,12 @@ if (!isset($user_id)) {
 
     <main class="main">
         <section class="dashboard">
+            <section>
+                <img src="Images/background2.jpg" height="450px" width="100%">
+            </section>
+
             <section class="show-products">
+                <h2 style="font-size:35px; font-weight: 800; text-align:center">Enroll in any course </h2>
                 <div class="box-container">
                     <?php
                     $select_products = mysqli_query($conn, "SELECT * FROM `courses` WHERE status='1'") or die('query failed');
@@ -82,17 +87,9 @@ if (!isset($user_id)) {
                 </div>
 
             </section>
+            <?php include 'footer.php'; ?>
         </section>
     </main>
-
-
-
-
-
-
-
-
-
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
 

@@ -94,7 +94,7 @@ if (isset($_POST['add_course'])) {
                     </form>
                 </div>
             </section>
-
+            <?php include 'footer.php'; ?>
         </section>
     </main>
     <!-- custom admin js file link  -->
