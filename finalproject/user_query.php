@@ -8,6 +8,15 @@ $user_id = $_SESSION['user_id'];
 if (!isset($user_id)) {    //checking if admin is login or not if not it ill redirect it to loginpage 
     header('location:login.php');
 }
+$logFile = 'logfile.txt';  //this is log file 
+
+function logMessage($message)   //this is a funtion to store data in a log file
+{
+    global $logFile;
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");       //open a log file
+    fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+    fclose($fileHandle);
+}
 //backend for submit button
 if (isset($_POST['send'])) {
 
@@ -17,13 +26,18 @@ if (isset($_POST['send'])) {
     $tcname = mysqli_real_escape_string($conn, $_POST['tname']);
     $msg = mysqli_real_escape_string($conn, $_POST['message']);
 
-    $select_message = mysqli_query($conn, "SELECT * FROM `message` WHERE name = '$name' AND email = '$email' AND number = '$number' AND message = '$msg'") or die('query failed');
 
-    if (mysqli_num_rows($select_message) > 0) {
-        $message[] = 'message sent already!';
+    $add_course_query = mysqli_query($conn, "INSERT INTO `message`(user_id, name, email, number, message,teachername) VALUES('$user_id', '$name', '$email', '$number', '$msg','$tcname')") or die(logMessage("$user_id: Error while sending message to $tcname: " . mysqli_error($conn)));
+
+    if (!$add_course_query) {
+        // If the assignment query fails, log an error message
+        $message[] = 'message not sent';
+        $assignmentErrorMessage = "$admin_id: Error while sending message to $tcname: " . mysqli_error($conn);
+        logMessage($assignmentErrorMessage);
     } else {
-        mysqli_query($conn, "INSERT INTO `message`(user_id, name, email, number, message,teachername) VALUES('$user_id', '$name', '$email', '$number', '$msg','$tcname')") or die('query failed');
         $message[] = 'message sent successfully!';
+        $assignmentErrorMessage = "$user_id: Message sent to  $tcname: ";
+        logMessage($assignmentErrorMessage);
     }
 }
 
@@ -54,7 +68,10 @@ if (isset($_POST['send'])) {
     <?php include 'usermenu.php'; ?>
     <main class="main">
         <section class="dashboard">
-            <img src="Images/carousal2.jpg" height="450px" width="100%">
+            <img src="Images/b6.jpg" height="430px" width="100%">
+            <div class="text">
+                <h1 class="title">Contact Us</h1>
+            </div>
             <div class="box-container">
                 <section id="section8">
                     <!--Contact Us form-->

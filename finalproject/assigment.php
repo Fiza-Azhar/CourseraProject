@@ -8,6 +8,15 @@ if (!isset($admin_id)) {        //checking if admin is login or not if not it il
     header('location:login.php');
     exit(); // Add exit here
 }
+$logFile = 'logfile.txt';  //this is log file 
+
+function logMessage($message)   //this is a funtion to store data in a log file
+{
+    global $logFile;
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");       //open a log file
+    fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+    fclose($fileHandle);
+}
 
 if (isset($_POST['add_assigment'])) {
 
@@ -20,7 +29,17 @@ if (isset($_POST['add_assigment'])) {
     $file_folder = 'uploaded_files/' . $file;
     $meetingDateTime = $_POST['meetingDateTime'];
     //query to add data
-    $add_course_query = mysqli_query($conn, "INSERT INTO `assignment` (coursename, assigmentname, file, datetime) VALUES('$cname', '$aname', '$file_folder', '$meetingDateTime')") or die('query failed');
+    $add_course_query = mysqli_query($conn, "INSERT INTO `assignment` (coursename, assigmentname, file, datetime) VALUES('$cname', '$aname', '$file_folder', '$meetingDateTime')") or die(logMessage("$admin_id: Error while adding assignment for $cname: " . mysqli_error($conn)));
+    if (!$add_course_query) {
+        // If the assignment query fails, log an error message
+        $message[] = 'assignment query failed';
+        $assignmentErrorMessage = "$admin_id: Error while adding assignment for $cname: " . mysqli_error($conn);
+        logMessage($assignmentErrorMessage);
+    } else {
+        $message[] = 'assignment added';
+        $assignmentErrorMessage = "$admin_id: Assigment for $cname: ";
+        logMessage($assignmentErrorMessage);
+    }
 }
 
 

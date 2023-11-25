@@ -73,7 +73,7 @@ if (isset($message)) {  //this is used to display a message on top
                         </li>
                         <li class="item">
                             <i class="fas fa-question"></i>
-                            <a href="#">FAQ's</a>
+                            <a href="accordian.php">FAQ's</a>
                         </li>
                     </ul>
                 </li>

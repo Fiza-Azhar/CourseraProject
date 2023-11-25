@@ -40,7 +40,7 @@ if (!isset($user_id)) {
             <section class="sone"></section>
             <div class="box-container">
                 <?php
-                $enroll_query = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE user_id = '$user_id'  AND payment_status='pending'") or die('query failed');
+                $enroll_query = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE user_id = '$user_id'  AND payment_status='pending'") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
                 if (mysqli_num_rows($enroll_query) > 0) {
                     while ($fetch_orders = mysqli_fetch_assoc($enroll_query)) {
                 ?>

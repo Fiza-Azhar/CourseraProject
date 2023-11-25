@@ -1,7 +1,5 @@
 <?php
-
 include 'connection.php';
-
 session_start();
 
 $user_id = $_SESSION['user_id'];
@@ -10,23 +8,33 @@ if (!isset($user_id)) {
     header('location:login.php');
 }
 
-/*if (isset($_POST['add_to_cart'])) {
+$logFile = 'logfile.txt';
 
-    $product_name = $_POST['product_name'];
-    $product_price = $_POST['product_price'];
-    $product_image = $_POST['product_image'];
-    $product_quantity = $_POST['product_quantity'];
+function logMessage($message)
+{
+    global $logFile;
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");
+    fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+    fclose($fileHandle);
+}
 
-    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
+if (isset($_GET['search'])) {
+    $searchTerm = mysqli_real_escape_string($conn, $_GET['search']);
 
-    if (mysqli_num_rows($check_cart_numbers) > 0) {
-        $message[] = 'already added to cart!';
+    // Perform your database query based on the search term
+    $sql = "SELECT * FROM courses WHERE coursename LIKE '%$searchTerm%' AND status='1' ORDER BY CASE WHEN coursename = '$searchTerm' THEN 0 ELSE 1 END";
+    $result = $conn->query($sql);
+
+    // Display search results
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "Result: " . $row['coursename'] . "<br>";
+            // Add more output as needed
+        }
     } else {
-        mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, quantity, image) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
-        $message[] = 'product added to cart!';
+        echo "No results found";
     }
-}*/
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,18 +60,23 @@ if (!isset($user_id)) {
 
     <?php include 'usermenu.php'; ?>
 
-
     <main class="main">
         <section class="dashboard">
             <section>
                 <img src="Images/background2.jpg" height="450px" width="100%">
             </section>
-
+            <!--show courses-->
             <section class="show-products">
                 <h2 style="font-size:35px; font-weight: 800; text-align:center">Enroll in any course </h2>
+                <form action="" method="GET">
+                    <input type="text" name="search" id="search" placeholder="Enter your search term" style="padding:1%; border-radius:10px;margin:1%">
+                    <button type="submit">Search</button>
+                </form>
+
+
                 <div class="box-container">
                     <?php
-                    $select_products = mysqli_query($conn, "SELECT * FROM `courses` WHERE status='1'") or die('query failed');
+                    $select_products = mysqli_query($conn, "SELECT * FROM `courses` WHERE status='1'") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
                     if (mysqli_num_rows($select_products) > 0) {
                         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                     ?>
@@ -73,10 +86,9 @@ if (!isset($user_id)) {
                                 <div class="cname"><?php echo $fetch_products['teachername']; ?></div>
                                 <div class="cname">Capacity: <?php echo $fetch_products['capacity']; ?>/-</div>
                                 <div class="cname"><?php echo $fetch_products['type']; ?></div>
-
                                 <input type="number" name="assignment" readonly="true" value="<?php echo $fetch_products['assignment']; ?>">
                                 <input type="number" name="quizes" readonly="true" value="<?php echo $fetch_products['quizes']; ?>">
-                                <div class="option-btn"><a href='enroll.php ?id=<?php echo $fetch_products['id']; ?> ' class="option-btn">Enroll</a></div>
+                                <div class="option-btn"><a href='enroll.php?id=<?php echo $fetch_products['id']; ?> ' class="option-btn">Enroll</a></div>
                             </div>
                     <?php
                         }
@@ -85,14 +97,12 @@ if (!isset($user_id)) {
                     }
                     ?>
                 </div>
-
             </section>
             <?php include 'footer.php'; ?>
         </section>
     </main>
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
-
 </body>
 
 </html>

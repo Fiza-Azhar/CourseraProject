@@ -14,6 +14,7 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
 }
 ?>
 
+<!--Html start-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,6 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>add assigment</title>
-
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -37,6 +37,11 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
     <!-- show courses  -->
     <main class="main">
         <section class="dashboard">
+            <section class="sone">
+            </section>
+            <div class="text">
+                <h1 class="title">Add Assigment</h1>
+            </div>
             <section class="show-products">
                 <div class="box-container">
                     <!-- show data in a format from sql table  -->
@@ -68,7 +73,7 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
                 </div>
 
             </section>
-            <?php include 'footer.php'; ?>
+            <?php include 'footer.php'; ?><!--Footer is in this file-->
         </section>
     </main>
 

@@ -40,11 +40,9 @@ if (isset($_POST['enroll_course'])) {
     $currentDateTime = date("Y-m-d H:i:s");
     $capacity = $_POST['capacity'];
     $intcapacity = intval($capacity);
-    $select_query = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
-
-
+    $select_query = mysqli_query($conn, "SELECT * FROM `courses`") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
     if ($intcapacity > 0) {
-        $select_course_name = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE teachername = '$tname' AND coursename = '$cname' AND user_id='$user_id'") or die('query failed');
+        $select_course_name = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE teachername = '$tname' AND coursename = '$cname' AND user_id='$user_id'") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
         //checking if course is already added or not with the same teacher name
         if (mysqli_num_rows($select_course_name) > 0) {
             $message[] = 'You are already registered in this course';
@@ -53,20 +51,20 @@ if (isset($_POST['enroll_course'])) {
         } else {
             $intcap = $intcapacity - 1;
             $intcap = strval($intcap);
-            $update_data = mysqli_query($conn, "UPDATE `courses` SET coursename='$cname', teachername='$tname', capacity='$intcap', assignment='$assignment', quizes='$quizes', type='$type', image='$image', updated_at='$currentDateTime' WHERE id='$update_id'");
+            $update_data = mysqli_query($conn, "UPDATE `courses` SET coursename='$cname', teachername='$tname', capacity='$intcap', assignment='$assignment', quizes='$quizes', type='$type', image='$image', updated_at='$currentDateTime' WHERE id='$update_id'") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));;
 
             if (!$update_data) {
                 echo "Error updating record: " . mysqli_error($conn);
             }
             $select_message = mysqli_query($conn, "SELECT * FROM `courses`") or die('query failed');
-            $enroll_data = mysqli_query($conn, "INSERT INTO `enrollment` (user_id,name,number, email,coursename,teachername,type ,payment_status) VALUES('$user_id','$name','$pnum' ,'$email','$cname','$tname','$type','$payment')") or die('query failed');
+            $enroll_data = mysqli_query($conn, "INSERT INTO `enrollment` (user_id,name,number, email,coursename,teachername,type ,payment_status) VALUES('$user_id','$name','$pnum' ,'$email','$cname','$tname','$type','$payment')") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
             $message[] = 'successfully added';
             $messagetext = "Successfully added"; // If no user is found, add an error message to the $message array.
             logMessage($messagetext);
         }
     } else {
         $message[] = 'There is no space in this course';
-        $messagetext = "There is no space in this course"; // If no user is found, add an error message to the $message array.
+        $messagetext = "$user_id: There is no space in this course "; // If no user is found, add an error message to the $message array.
         logMessage($messagetext);
     }
 }

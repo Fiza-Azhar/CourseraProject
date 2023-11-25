@@ -37,6 +37,11 @@ if (!isset($admin_id)) {
 
     <?php include 'admin_menu.php'; ?>
     <main class="main">
+        <section class="sone">
+        </section>
+        <div class="text">
+            <h1 class="title">Check Query</h1>
+        </div>
         <section class="messages">
             <h2> Messages </h2>
             <div class="box-container">

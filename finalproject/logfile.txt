@@ -21,3 +21,72 @@ Data has been updated  2023-11-25 09:31:03
 Mano are already registered in this course  2023-11-25 09:31:38
 Mano are already registered in this course  2023-11-25 09:36:21
 Data has been updated  2023-11-25 09:36:55
+Maryam has successfully logged in  2023-11-25 18:18:37
+ww has successfully logged in  2023-11-25 18:21:03
+Password not matched  2023-11-25 18:46:54
+Sccessfully registered  2023-11-25 18:47:15
+zohan has successfully logged in  2023-11-25 18:47:30
+Successfully added  2023-11-25 18:48:38
+12 payment status has been updated  2023-11-25 18:49:08
+Successfully registered  2023-11-25 19:12:24
+oop with Sidra  has already registered sorry sidra 2023-11-25 19:16:02
+4: An error occurred while processing the request  2023-11-25 19:27:04
+4: An error occurred while processing the request  2023-11-25 19:27:04
+4: Data has been updated  2023-11-25 19:27:15
+4: An error occurred while processing the request  2023-11-25 19:27:15
+4: An error occurred while processing the request  2023-11-25 19:27:20
+4: An error occurred while processing the request  2023-11-25 19:27:20
+4: An error occurred while processing the request  2023-11-25 19:28:03
+4: An error occurred while processing the request  2023-11-25 19:28:03
+4: An error occurred while processing the request  2023-11-25 19:28:19
+4: An error occurred while processing the request  2023-11-25 19:28:19
+4: An error occurred while processing the request  2023-11-25 19:28:49
+4: An error occurred while processing the request  2023-11-25 19:28:49
+4: An error occurred while processing the request  2023-11-25 19:29:22
+4: An error occurred while processing the request  2023-11-25 19:29:22
+4: An error occurred while processing the request  2023-11-25 19:30:51
+4: An error occurred while processing the request  2023-11-25 19:30:51
+4: An error occurred while processing the request  2023-11-25 19:31:32
+4: An error occurred while processing the request  2023-11-25 19:31:32
+4: An error occurred while processing the request  2023-11-25 19:31:33
+4: An error occurred while processing the request  2023-11-25 19:31:33
+4: An error occurred while processing the request  2023-11-25 19:32:09
+4: An error occurred while processing the request  2023-11-25 19:32:09
+4: An error occurred while processing the request  2023-11-25 19:32:36
+4: An error occurred while processing the request  2023-11-25 19:32:36
+4: An error occurred while processing the request  2023-11-25 19:33:29
+4: An error occurred while processing the request  2023-11-25 19:33:29
+4: An error occurred while processing the request  2023-11-25 19:34:19
+4: An error occurred while processing the request  2023-11-25 19:34:19
+4: An error occurred while processing the request  2023-11-25 19:34:47
+4: An error occurred while processing the request  2023-11-25 19:34:47
+4: An error occurred while processing the request  2023-11-25 19:35:34
+4: An error occurred while processing the request  2023-11-25 19:35:34
+4: An error occurred while processing the request  2023-11-25 19:35:48
+4: An error occurred while processing the request  2023-11-25 19:35:48
+4: An error occurred while processing the request  2023-11-25 19:36:18
+4: An error occurred while processing the request  2023-11-25 19:36:18
+4: Data has been updated  2023-11-25 19:36:33
+4: An error occurred while processing the request  2023-11-25 19:36:33
+4: An error occurred while updating the data  2023-11-25 19:42:16
+4: An error occurred while updating the data  2023-11-25 19:42:30
+aa are already registered in this course  2023-11-25 19:43:29
+Successfully added  2023-11-25 19:44:07
+4: An error occurred while updating the data  2023-11-25 19:44:20
+4: An error occurred while processing the request  2023-11-25 19:46:57
+4: An error occurred while processing the request  2023-11-25 19:46:58
+4: Data has been updated  2023-11-25 19:47:06
+4: An error occurred while processing the request  2023-11-25 19:47:06
+4: Data has been updated  2023-11-25 19:49:06
+4: Assigment for cn:   2023-11-25 20:01:50
+4: Error while adding assignment for cn: Unknown column 'cousename' in 'field list'  2023-11-25 20:07:01
+4: Assigment for cn:   2023-11-25 20:07:41
+4: Error while adding content for cn: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '','uploaded_files/PROFESSIONAL PRACTICES IN.docx', 'i am very busy perosn')' at line 1  2023-11-25 20:13:31
+4: Content for :   2023-11-25 20:18:28
+4: Content for cn:   2023-11-25 20:19:06
+4: Error while adding content for : Unknown column 'updated_at' in 'field list'  2023-11-25 20:20:45
+4: Content for :   2023-11-25 20:21:12
+7: Error while sending message to : Unknown column 'nme' in 'field list'  2023-11-25 20:28:54
+7: Message sent to  :   2023-11-25 20:29:09
+7: Error  Table 'coursera_db.corses' doesn't exist  2023-11-25 20:42:22
+Successfully added  2023-11-25 22:13:53

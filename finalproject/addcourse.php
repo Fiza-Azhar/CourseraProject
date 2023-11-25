@@ -20,33 +20,39 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
     header('location:login.php');
     exit(); // Add exit here
 }
+try {
+    if (isset($_POST['add_course'])) {   //when click on below submit button this will be triggered
+        $name = mysqli_real_escape_string($conn, $_POST['cname']);
+        $tname = $_POST['tname']; // Use the correct variable name that is in your html 
+        // Use the correct variable name
+        $capacity = $_POST['capacity'];
+        $assignment = $_POST['assignment'];     //this post method is used to fetch data from below input tag
+        $quizes = $_POST['quizes'];
+        $type = $_POST['type'];
+        $image = $_FILES['image']['name'];
+        $image_size = $_FILES['image']['size'];
+        $image_tmp_name = $_FILES['image']['tmp_name'];
+        $image_folder = 'uploaded_img/' . $image;
+        $currentDateTime = date("Y-m-d H:i:s");
 
-if (isset($_POST['add_course'])) {
-    $name = mysqli_real_escape_string($conn, $_POST['cname']);
-    $tname = $_POST['tname']; // Use the correct variable name that is in your html 
-    // Use the correct variable name
-    $capacity = $_POST['capacity'];
-    $assignment = $_POST['assignment'];
-    $quizes = $_POST['quizes'];
-    $type = $_POST['type'];
-    $image = $_FILES['image']['name'];
-    $image_size = $_FILES['image']['size'];
-    $image_tmp_name = $_FILES['image']['tmp_name'];
-    $image_folder = 'uploaded_img/' . $image;
-    $currentDateTime = date("Y-m-d H:i:s");
-
-    $select_course_name = mysqli_query($conn, "SELECT coursename, teachername FROM `courses` WHERE teachername = '$tname' AND coursename = '$name'") or die('query failed');
-    //checking if course is already added or not with the same teacher name
-    if (mysqli_num_rows($select_course_name) > 0) {
-        $message[] = 'course name already added';
-        $messagetext = "$name with $tname  has already registered"; // If no user is found, add an error message to the $message array.
-        logMessage($messagetext);
-    } else {
-        $add_course_query = mysqli_query($conn, "INSERT INTO `courses`(coursename, teachername, capacity, assignment, quizes, type,image,updated_at) VALUES('$name', '$tname', '$capacity', '$assignment', '$quizes', '$type','$image','$currentDateTime')") or die('query failed');
-        $message[] = 'successfully added';
-        $messagetext = "Successfully registered"; // If no user is found, add an error message to the $message array.
-        logMessage($messagetext);
+        $select_course_name = mysqli_query($conn, "SELECT coursename, teachername FROM `courses` WHERE teachername = '$tname' AND coursename = '$name'") or die(logMessage("$admin_id: Error while selecting table " . mysqli_error($conn)));
+        //checking if course is already added or not with the same teacher name
+        if (mysqli_num_rows($select_course_name) > 0) {
+            $message[] = 'sorry course name already added';
+            $messagetext = "$admin_id: $name with $tname  has already registered sorry $tname "; // If no user is found, add an error message to the $message array.
+            logMessage($messagetext);
+        } else {
+            $add_course_query = mysqli_query($conn, "INSERT INTO `courses`(coursename, teachername, capacity, assignment, quizes, type,image,updated_at) VALUES('$name', '$tname', '$capacity', '$assignment', '$quizes', '$type','$image','$currentDateTime')") or die(logMessage("$admin_id: Error while adding course  " . mysqli_error($conn)));
+            $message[] = 'successfully added';
+            $messagetext = "$admin_id: Successfully registered new course"; // If no user is found, add an error message to the $message array.
+            logMessage($messagetext);
+        }
     }
+} catch (Exception $e) {
+    // If any exception occurs during the try block, catch it and log an error message into log file
+    $message[] = 'An error occurred: ' . $e->getMessage();
+    $messagetext = "$admin_id: An error occurred while processing the request";
+    logMessage($messagetext);
 }
 
 ?>
@@ -70,7 +76,7 @@ if (isset($_POST['add_course'])) {
 </head>
 
 <body>
-    <?php include 'admin_menu.php'; ?>
+    <?php include 'admin_menu.php'; ?> <!--Admin menu is in this file-->
     <main class="main">
         <section class="dashboard">
             <section class="sone">
@@ -94,7 +100,7 @@ if (isset($_POST['add_course'])) {
                     </form>
                 </div>
             </section>
-            <?php include 'footer.php'; ?>
+            <?php include 'footer.php'; ?><!--footer is in this file-->
         </section>
     </main>
     <!-- custom admin js file link  -->

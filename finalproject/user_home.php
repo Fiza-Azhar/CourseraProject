@@ -35,7 +35,10 @@ if (!isset($user_id)) {    //checking if user is login or not if not it ill redi
     <?php include 'usermenu.php'; ?>
     <main class="main">
         <section class="dashboard">
-            <section class="sone"></section>
+            <img src="Images/b5.jpg" height="450px" width="100%">
+            <div class="text">
+                <h1 class="title">User Pannel</h1>
+            </div>
             <section class="sectionthree">
                 <div class="left-space">
                     <div class="fade-container">

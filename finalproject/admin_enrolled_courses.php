@@ -21,13 +21,12 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
 
 //check if payment type is paid or not 
 if (isset($_POST['update_order'])) {
-
    $order_update_id = $_POST['order_id'];
    $update_payment = $_POST['update_payment'];
    $currentDateTime = date("Y-m-d H:i:s");
    mysqli_query($conn, "UPDATE `enrollment` SET payment_status = '$update_payment',updated_at='$currentDateTime' WHERE id = '$order_update_id'") or die('query failed');
    $message[] = 'payment status has been updated!';
-   $messagetext = "$order_update_id payment status has been updated"; // If no user is found, add an error message to the $message array.
+   $messagetext = "$admin_id has updated the payment status of $order_update_id"; // If no user is found, add an error message to the $message array.
    logMessage($messagetext);
 }
 
@@ -48,6 +47,7 @@ if (isset($_POST['delete_values'])) {
       logMessage($messagetext);
    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -77,10 +77,13 @@ if (isset($_POST['delete_values'])) {
       <section class="show-products">
          <section class="sone">
          </section>
+         <div class="text">
+            <h1 class="title">Adjust Courses</h1>
+         </div>
          <div class="box-container">
             <!-- Fetching data-->
             <?php
-            $select_orders = mysqli_query($conn, "SELECT * FROM `enrollment` where teachername='$admin_name' AND status='1'") or die('query failed');
+            $select_orders = mysqli_query($conn, "SELECT * FROM `enrollment` where teachername='$admin_name' AND status='1'AND payment_status='pending'") or die('query failed');
             if (mysqli_num_rows($select_orders) > 0) {
                while ($fetch_orders = mysqli_fetch_assoc($select_orders)) {
             ?>

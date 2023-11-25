@@ -10,7 +10,15 @@ if (!isset($admin_id)) {  //checking if admin is login or not if not it ill redi
     header('location:login.php');
     exit(); // Add exit here
 }
+$logFile = 'logfile.txt';  //this is log file 
 
+function logMessage($message)   //this is a funtion to store data in a log file
+{
+    global $logFile;
+    $fileHandle = fopen($logFile, 'a') or die("Can't open file");       //open a log file
+    fwrite($fileHandle, $message . '  ' . date('Y-m-d H:i:s') . "\n");
+    fclose($fileHandle);
+}
 if (isset($_POST['add_content'])) {
     $cname = $_POST['cname']; // // Use the correct variable name that is in your html 
     $file = $_FILES['file']['name'];
@@ -19,7 +27,17 @@ if (isset($_POST['add_content'])) {
     $file_folder = 'uploaded_files/' . $file;
     $tmessage = $_POST['textmessages']; // // Use the correct variable name that is in your html 
     $currentDateTime = date("Y-m-d H:i:s");
-    $add_course_query = mysqli_query($conn, "INSERT INTO `coursecontent` (coursename,file, message) VALUES($cname','$file_folder', '$tmessage')") or die('query failed');
+    $add_course_query = mysqli_query($conn, "INSERT INTO `coursecontent` (coursename,file, message) VALUES('$cname','$file_folder', '$tmessage')") or die(logMessage("$admin_id: Error while adding content for $cname: " . mysqli_error($conn)));
+    if (!$add_course_query) {
+        // If the assignment query fails, log an error message
+        $message[] = 'content adding query failed';
+        $assignmentErrorMessage = "$admin_id: Error while adding content for $cname: " . mysqli_error($conn);
+        logMessage($assignmentErrorMessage);
+    } else {
+        $message[] = 'content added';
+        $assignmentErrorMessage = "$admin_id: Content for $cname: ";
+        logMessage($assignmentErrorMessage);
+    }
 }
 ?>
 
@@ -47,12 +65,15 @@ if (isset($_POST['add_content'])) {
         <section class="dashboard">
             <section class="sone">
             </section>
+            <div class="text">
+                <h1 class="title">Add Content</h1>
+            </div>
             <section class="add-products">
                 <div class="right_item">
                     <!-- html basic form  -->
                     <form action="" method="post" enctype="multipart/form-data">
                         <h3>ADD CONTENT</h3>
-                        <input type="text" name="cname" class="box" placeholder="Enter Course name" required>
+                        <input type="text" name="name" class="box" placeholder="Enter Course name" required>
                         <input type="file" id="file" name="file" class="box" accept=".pdf, .doc, .docx">
                         <input type="text" name="textmessages" class="box" placeholder="Enter any Message" required>
                         <input type="submit" value="Add" name="add_content" class="btn">

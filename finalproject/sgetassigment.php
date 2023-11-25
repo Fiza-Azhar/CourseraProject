@@ -38,7 +38,7 @@ if (!isset($admin_id)) {
                 <div class="box-container">
                     <?php
                     $course_name = $_GET['coursename'];
-                    $select_products = mysqli_query($conn, "SELECT * FROM `assignment` where coursename='$course_name' ") or die('query failed');
+                    $select_products = mysqli_query($conn, "SELECT * FROM `assignment` where coursename='$course_name' ") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
                     if (mysqli_num_rows($select_products) > 0) {
                         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                     ?>

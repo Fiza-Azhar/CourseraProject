@@ -36,7 +36,7 @@ if (!isset($user_id)) {
     <?php include 'usermenu.php'; ?>
     <main class="main">
         <section class="dashboard">
-            <section class="sone"></section>
+            <img src="Images/b7.jpg" height="430px" width="100%">
             <div class="box-container">
                 <?php
                 $enroll_query = mysqli_query($conn, "SELECT * FROM `enrollment` WHERE user_id = '$user_id'  AND payment_status='completed'") or die('query failed');
