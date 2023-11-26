@@ -92,7 +92,7 @@ if (!$user_id) {
 
 
         <div class="accordion">
-            <h2> Accordian</h2>
+            <h2>Questions</h2>
             <div class="accordion-item">
                 <div class="accordion-header">
                     What is Coursera?

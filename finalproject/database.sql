@@ -44,7 +44,17 @@ CREATE TABLE `message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-
+CREATE TABLE `message2` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `createdat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+  `adminname` varchar(100) NOT NULL,
+  `message` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE `message2`
+  ADD PRIMARY KEY (`id`);
+  ALTER TABLE `message2`
+MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 -- Table structure for table `orders`
 

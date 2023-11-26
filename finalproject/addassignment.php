@@ -67,7 +67,7 @@ if (!isset($admin_id)) {    //checking if admin is login or not if not it ill re
                     <?php
                         }
                     } else {
-                        echo '<p class="empty">no products added yet!</p>';
+                        echo '<p class="empty">no Course added by you!</p>';
                     }
                     ?>
                 </div>

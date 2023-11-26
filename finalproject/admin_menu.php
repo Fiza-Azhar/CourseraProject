@@ -81,7 +81,7 @@ if (isset($message)) {
                     <span class="close" onclick="closeDialog()">&times;</span>
                     <div class="box-container">
                         <?php
-                        $select_products = mysqli_query($conn, "SELECT * FROM `courses` where teachername='$admin_name' AND status='1'") or die('query failed');
+                        $select_products = mysqli_query($conn, "SELECT * FROM `courses` where teachername='$admin_name' AND status='1'") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
                         if (mysqli_num_rows($select_products) > 0) {
                             while ($fetch_products = mysqli_fetch_assoc($select_products)) {
                         ?>
@@ -102,7 +102,7 @@ if (isset($message)) {
                         <?php
                             }
                         } else {
-                            echo '<p class="empty">no products added yet!</p>';
+                            echo '<p class="empty">No course added yet!</p>';
                         }
                         ?>
                     </div>

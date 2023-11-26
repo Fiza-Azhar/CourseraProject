@@ -41,11 +41,22 @@ if (isset($_POST['update_values'])) {
 }
 if (isset($_POST['delete_values'])) {
     $update_id = $_POST['id'];
+    $tname = $_POST['tname'];
+    $cname = $_POST['cname'];
     $status = 0;
     $currentDateTime = date("Y-m-d H:i:s");
     $update_data = mysqli_query($conn, "UPDATE `courses` SET status='$status',updated_at='$currentDateTime' WHERE id='$update_id'");
     if ($update_data) {
         $message[] = 'Data has been updated!';
+        $messagetext = "$admin_id: Data has been deleted"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
+    } else {
+        $message[] = 'Error updating data: ' . mysqli_error($conn);
+        $messagetext = "$admin_id: There is some erro while deleting this record"; // If no user is found, add an error message to the $message array.
+        logMessage($messagetext);
+    } //for updation in enrollment
+    $update_data = mysqli_query($conn, "UPDATE `enrollment` SET status='$status',updated_at='$currentDateTime' WHERE teachername='$tname' AND coursename='$cname'");
+    if ($update_data) {
         $messagetext = "$admin_id: Data has been deleted"; // If no user is found, add an error message to the $message array.
         logMessage($messagetext);
     } else {
@@ -88,7 +99,7 @@ if (isset($_POST['delete_values'])) {
             </div>
             <div class="box-container">
                 <?php
-                $select_orders = mysqli_query($conn, "SELECT * FROM `courses` WHERE teachername='$admin_name' AND  status='1'") or die('query failed');
+                $select_orders = mysqli_query($conn, "SELECT * FROM `courses` WHERE teachername='$admin_name' AND  status='1'") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
                 if (mysqli_num_rows($select_orders) > 0) {
                     while ($row = mysqli_fetch_assoc($select_orders)) {
                 ?>

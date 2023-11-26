@@ -32,7 +32,7 @@ if (isset($_POST['send'])) {
     if (!$add_course_query) {
         // If the assignment query fails, log an error message
         $message[] = 'message not sent';
-        $assignmentErrorMessage = "$admin_id: Error while sending message to $tcname: " . mysqli_error($conn);
+        $assignmentErrorMessage = "$user_id: Error while sending message to $tcname: " . mysqli_error($conn);
         logMessage($assignmentErrorMessage);
     } else {
         $message[] = 'message sent successfully!';

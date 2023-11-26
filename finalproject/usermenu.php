@@ -53,6 +53,10 @@ if (isset($message)) {  //this is used to display a message on top
                     <a href="enrolled_students.php">Enroll</a>
                 </li>
                 <li class="item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="history.php">History</a>
+                </li>
+                <li class="item">
                     <div class="submenu-item">
                         <i class="fas fa-chevron-right"></i>
                         <span>Aproach Pages</span>

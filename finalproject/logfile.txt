@@ -90,3 +90,29 @@ Successfully added  2023-11-25 19:44:07
 7: Message sent to  :   2023-11-25 20:29:09
 7: Error  Table 'coursera_db.corses' doesn't exist  2023-11-25 20:42:22
 Successfully added  2023-11-25 22:13:53
+ww has successfully logged in  2023-11-26 19:02:10
+Sccessfully registered  2023-11-26 19:06:22
+arosh has successfully logged in  2023-11-26 19:06:35
+8: Successfully registered new course  2023-11-26 19:09:28
+8: Data has been updated  2023-11-26 19:09:40
+ww has successfully logged in  2023-11-26 19:10:25
+Maryam has successfully logged in  2023-11-26 19:10:39
+4: Data has been deleted  2023-11-26 19:10:48
+Successfully added  2023-11-26 19:23:18
+4 has updated the payment status of 15  2023-11-26 19:23:39
+4: Data has been deleted  2023-11-26 19:23:58
+4: Data has been deleted  2023-11-26 19:23:58
+4: Data has been updated  2023-11-26 19:59:45
+4: Message sent :   2023-11-26 20:33:48
+4: Message sent :   2023-11-26 20:39:37
+5: Message sent to  Maryam:   2023-11-26 20:40:19
+4: Message sent :   2023-11-26 20:40:44
+4: Message sent :   2023-11-26 20:44:15
+Sccessfully registered  2023-11-26 20:47:07
+Zain has successfully logged in  2023-11-26 20:47:18
+9: Message sent to  Maryam:   2023-11-26 20:47:50
+4: Message sent :   2023-11-26 20:59:39
+4: Message sent :   2023-11-26 21:02:19
+4: Message sent :   2023-11-26 21:06:07
+4: Message sent :   2023-11-26 21:06:48
+4: Message sent :   2023-11-26 21:12:26

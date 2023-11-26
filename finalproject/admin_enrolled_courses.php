@@ -83,7 +83,7 @@ if (isset($_POST['delete_values'])) {
          <div class="box-container">
             <!-- Fetching data-->
             <?php
-            $select_orders = mysqli_query($conn, "SELECT * FROM `enrollment` where teachername='$admin_name' AND status='1'AND payment_status='pending'") or die('query failed');
+            $select_orders = mysqli_query($conn, "SELECT * FROM `enrollment` where teachername='$admin_name' AND status='1'AND payment_status='pending'") or die(logMessage("$user_id: Error  " . mysqli_error($conn)));
             if (mysqli_num_rows($select_orders) > 0) {
                while ($fetch_orders = mysqli_fetch_assoc($select_orders)) {
             ?>
